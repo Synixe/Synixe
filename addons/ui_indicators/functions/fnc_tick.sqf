@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-private _alphaClamp = NIGHT_ALPHA + sunOrMoon * DAY_ALPHA;
+private _alphaClamp = NIGHT_ALPHA + (sunOrMoon * DAY_ALPHA);
 
 private _units = allUnits - [ace_player];
 if (_units isEqualTo []) exitWith {};
@@ -15,7 +15,7 @@ if (_units isEqualTo []) exitWith {};
   };
   _icon_pos set [2, (_icon_pos select 2) + _height_adjust];
 
-  private _distance = _icon_pos distance (vehicle player);
+  private _distance = _icon_pos distance (vehicle ace_player);
   private _alpha = linearConversion [RADIUS, RADIUS * 2, _distance, _alphaClamp, 0, true];
 
   if (count lineIntersectsSurfaces [eyePos ace_player, eyePos _x, ace_player, _x] == 0) then {
@@ -32,25 +32,23 @@ if (_units isEqualTo []) exitWith {};
   private _color = [_x, _alpha] call EFUNC(ui,getColor);
   private _texture = "\A3\ui_f\data\igui\cfg\cursors\select_ca.paa";
 
-  if (player distance _x < RADIUS * 2) then {
-    private _vis = [(vehicle _x), "VIEW"] checkVisibility [eyePos player,  AGLToASL (_x modelToWorldVisual (_x selectionPosition "Spine3"))];
+  if (ace_player distance _x < RADIUS * 2) then {
+    private _vis = [(vehicle _x), "VIEW"] checkVisibility [eyePos ace_player,  AGLToASL (_x modelToWorldVisual (_x selectionPosition "Spine3"))];
     private _alphaPre = _color select 3;
 
-    private _fadeState = _x getVariable [GVAR(OccludeFade), 0];
+    private _fadeState = _x getVariable [QGVAR(OccludeFade), 0];
 
     if (_fadeState > 1) then {_fadeState = 1};
     if (_fadeState < 0) then {_fadeState = 0};
 
     private _curAlpha = _fadeState;
-    private _newAlpha = 0;
-    if (_vis == 0 && _alphaPre > 0) then {
+    private _newAlpha = if (_vis == 0 && _alphaPre > 0) then {
       (_curAlpha - 0.005) min _alphaPre
     } else {
-      (_curAlpha + 0.005) min _alphaPre;
+      (_curAlpha + 0.005) min _alphaPre
     };
-    _x setVariable [GVAR(OccludeFade),_newAlpha];
-    _color set [3,_newAlpha];
+    _x setVariable [QGVAR(OccludeFade), _newAlpha];
+    _color set [3, _newAlpha];
   };
-
   drawIcon3D [_texture, _color, _icon_pos, 1, 1, 0];
 } forEach _units;

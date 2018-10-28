@@ -13,10 +13,10 @@
 
 addMissionEventHandler ["Draw3D", {
   if (call EFUNC(common,inZeus) && {!(call EFUNC(common,inZeusScreenshot))}) then {
-    if (GPGV(displayPlayerInfo,false)) then {
+    if (GVAR(displayPlayerInfo)) then {
       call FUNC(tickPlayerInfo);
     };
-    if (GPGV(visibilityIndicator,false)) then {
+    if (GVAR(visibilityIndicator)) then {
       call FUNC(tickVisibility);
     };
   };

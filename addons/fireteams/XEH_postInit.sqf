@@ -6,9 +6,9 @@
 }] call CBA_fnc_addEventHandler;
 
 if (isServer) then {
-
   0 spawn {
     sleep 3;
+    diag_log "Starting Organize";
     call FUNC(organize);
 
     [QGVAR(playerJoined), {
@@ -26,7 +26,7 @@ if (hasInterface) then {
   [QGVAR(processed), {
     params ["_unit"];
     diag_log format ["Local Unit Processed: %1", _unit];
-    if (_unit isEqualTo player && {PATCH("synixe_radios")}) then {
+    if (_unit isEqualTo player) then {
       call EFUNC(radios,setup);
     };
   }] call CBA_fnc_addEventHandler;

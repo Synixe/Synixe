@@ -17,5 +17,5 @@
 #include "\z\synixe\addons\main\script_macros.hpp"
 
 #define NIGHT_ALPHA 0.15
-#define DAY_ALPHA 0.15
+#define DAY_ALPHA 0.45
 #define RADIUS 10

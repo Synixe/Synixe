@@ -3,6 +3,7 @@ class RscText;
 class RscListbox;
 class RscPicture;
 class RscEdit;
+class RscControlsGroup;
 
 class RscDisplayAttributes {
   class Controls {

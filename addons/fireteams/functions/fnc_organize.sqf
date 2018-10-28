@@ -11,8 +11,9 @@
       diag_log format ["- Parent Group %1 is %2", _parentGroup, _parent];
       private _team = _split select 1;
       diag_log format ["- Color for %1 is %2", groupId _group, _team];
+      diag_log format ["- Units: %1", units _group];
       {
-        if (_x getVariable [QGVAR(processed), false]) then {
+        if !(_x getVariable [QGVAR(processed), false]) then {
           diag_log format ["- Processing %1", _x];
           if (leader _group isEqualTo _x) then {
             if (missionNamespace getVariable [format["leader_%1", groupId _group], objNull] isEqualTo objNull) then {

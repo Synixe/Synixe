@@ -11,16 +11,16 @@
   if (_distance > 15 || {[objNull, "VIEW"] checkVisibility [eyePos curatorCamera, aimPos _x] < 0.25}) exitWith {1};
 
   _x setVariable [QGVAR(offset), -10];
-  if (GPGV(displayName,false)) then {
+  if (GVAR(displayName)) then {
     [_x, name _x] call FUNC(drawInfo);
   };
-  if (GPGV(displayRole,false) && {!(roleDescription _x isEqualTo "")}) then {
+  if (GVAR(displayRole) && {!(roleDescription _x isEqualTo "")}) then {
     [_x, roleDescription _x] call FUNC(drawInfo);
   };
-  if (GPGV(displayFps,false)) then {
+  if (GVAR(displayFps)) then {
     [_x, format ["FPS: %1", str (_x getVariable [QGVAR(fps), 0])]] call FUNC(drawInfo);
   };
-  if (GPGV(displayTeam,false)) then {
+  if (GVAR(displayTeam)) then {
     private _team = _x getVariable [QGVAR(team), "MAIN"];
     private _color = (_team call EFUNC(fireteams,teamNumber)) call EFUNC(fireteams,teamColorValues);
     [_x, _team, _color] call FUNC(drawInfo);
@@ -28,8 +28,10 @@
   if (_x getVariable ["ace_spectator_isSet", false]) then {
     [_x, "Spectating"] call FUNC(drawInfo);
   } else {
-    if (GPGV(displayRadios,false)) then {
+    if (GVAR(displayRadios)) then {
+      systemChat "radios";
       if (isClass(configFile >> "CfgPatches" >> "acre_main")) then {
+        systemChat "acre";
         private _radios = "";
         private _count = 0;
         {
@@ -54,7 +56,7 @@
         };
       };
     };
-    if (GPGV(displayACEMedical,false)) then {
+    if (GVAR(displayACEMedical)) then {
       if (_x getVariable ["ACE_isUnconscious", false]) exitWith {
         [_x, "Unconscious", [1,0.5,0.5,1]] call FUNC(drawInfo);
       };
@@ -69,7 +71,7 @@
       };
       [_x, "Healthy"] call FUNC(drawInfo);
     };
-    if (GPGV(displayACEMedicalLives,false)) then {
+    if (GVAR(displayACEMedicalLives)) then {
       [_x, format ["Lives: %1", _x getVariable ["ace_medical_amountOfReviveLives", 0]]];
     };
   };

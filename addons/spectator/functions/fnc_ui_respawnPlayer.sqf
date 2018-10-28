@@ -60,7 +60,7 @@ private _fnc_onKeyUp = {
 private _fnc_onUnload = {
   params ["_display"];
 
-  private _logic = missionNamespace getVariable [BIS_fnc_initCuratorAttributes_target,objnull];
+  private _logic = missionNamespace getVariable ["BIS_fnc_initCuratorAttributes_target", objnull];
   if (isNull _logic) exitWith {};
 };
 
@@ -70,7 +70,7 @@ private _fnc_onConfirm = {
   private _display = ctrlparent _ctrlButtonOK;
   if (isNull _display) exitWith {};
 
-  private _logic = missionNamespace getVariable [BIS_fnc_initCuratorAttributes_target,objnull];
+  private _logic = missionNamespace getVariable ["BIS_fnc_initCuratorAttributes_target", objnull];
   if (isNull _logic) exitWith {};
 
   private _lb = _display displayCtrl 16189;
