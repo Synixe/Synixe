@@ -1,0 +1,1 @@
+#include "\z\synixe\addons\editor\script_component.hpp"

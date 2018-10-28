@@ -1,0 +1,11 @@
+{
+  "name": "Synixe",
+  "prefix": "synixe",
+  "author": "SynixeBrett",
+  "files": [
+    "mod.cpp",
+    "synixe_logo_transparent_ca.paa"
+  ],
+  "toolchain": "armake",
+  "pdrive": "R:\\Arma3Work"
+}

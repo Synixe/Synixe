@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="Synixe">
+  <Package name="Spectator">
+    <Key ID="STR_Synixe_common_TextChannels">
+      <English>Text Channels</English>
+    </Key>
+    <Key ID="STR_Synixe_common_GlobalChat">
+      <English>Global Chat</English>
+    </Key>
+  </Package>
+</Project>
