@@ -1,6 +1,5 @@
 *.pbo
 logs/
-target/
 releases
 *.biprivatekey
 tools/

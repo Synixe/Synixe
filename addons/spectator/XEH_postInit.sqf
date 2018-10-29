@@ -2,6 +2,10 @@
 
 if (!hasInterface || {!isMultiplayer}) exitWith {0};
 
+player addEventHandler ["Killed", {
+  player setVariable [QGVAR(loadout), getUnitLoadout player];
+}];
+
 // Switch to spectator upon death
 player addEventHandler ["Respawn", {
   params ["", "_corpse"];
@@ -19,11 +23,14 @@ player addEventHandler ["Respawn", {
 
 // Respawn from Zeus
 [QGVAR(respawn), {
-  params ["_position"];
+  params ["_position", "_loadout"];
   player setVariable [QGVAR(dead), false, true];
   player setPos _position;
   player enableSimulation true;
   [false] call ace_spectator_fnc_setSpectator;
+  if (_loadout) then {
+    player setUnitLoadout [player getVariable [QGVAR(loadout), []]];
+  };
 }] call CBA_fnc_addEventHandler;
 
 // TODO replace with onload for pause menu

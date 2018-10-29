@@ -8,7 +8,6 @@
 if (isServer) then {
   0 spawn {
     sleep 3;
-    diag_log "Starting Organize";
     call FUNC(organize);
 
     [QGVAR(playerJoined), {

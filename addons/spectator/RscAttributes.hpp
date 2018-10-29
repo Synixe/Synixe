@@ -74,6 +74,21 @@ class GVAR(RscRespawnPlayer): RscDisplayAttributes {
               h = H_PART(1);
               autocomplete = "";
             };
+            class LabelGroup: Title {
+              idc = -1;
+              text = CSTRING(ModuleRespawnPlayer_group);
+              toolTip = CSTRING(ModuleRespawnPlayer_group_desc);
+              x = W_PART(15.9);
+              y = H_PART(7.1);
+              w = W_PART(9);
+            };
+            class UseGroup: RscCheckBox {
+              idc = 16188;
+              x = W_PART(25);
+              y = H_PART(7.1);
+              w = W_PART(1);
+              h = H_PART(1);
+            };
           };
         };
       };

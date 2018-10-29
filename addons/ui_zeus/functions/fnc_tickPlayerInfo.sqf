@@ -56,6 +56,9 @@
         };
       };
     };
+    if (GVAR(displayACEMedicalLives)) then {
+      [_x, format ["Lives: %1", _x getVariable ["ace_medical_amountOfReviveLives", 0]]];
+    };
     if (GVAR(displayACEMedical)) then {
       if (_x getVariable ["ACE_isUnconscious", false]) exitWith {
         [_x, "Unconscious", [1,0.5,0.5,1]] call FUNC(drawInfo);
@@ -70,9 +73,6 @@
         [_x, "In Pain", [1,0.5,0.5,1]] call FUNC(drawInfo);
       };
       [_x, "Healthy"] call FUNC(drawInfo);
-    };
-    if (GVAR(displayACEMedicalLives)) then {
-      [_x, format ["Lives: %1", _x getVariable ["ace_medical_amountOfReviveLives", 0]]];
     };
   };
 } forEach allPlayers;

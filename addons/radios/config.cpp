@@ -38,7 +38,7 @@ class Cfg3DEN {
               expression = "";
               typeName = "STRING";
               validate = "none";
-              defaultValue = """default""";
+              defaultValue = """standard""";
             };
             class SynixeRadioSingleSquad {
               displayName = "Single Squadnet";

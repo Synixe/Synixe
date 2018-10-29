@@ -16,13 +16,13 @@
  * Public: No
  */
 
-params ["_logic","_uid"];
+params ["_logic", "_uid", "_loadout"];
 
 // Get the chosen unit
 private _player = [_uid] call BIS_fnc_getUnitByUID;
 if (_player getVariable [QGVAR(dead), false]) then {
   private _position = _logic modelToWorld [0,0,0];
-  [QGVAR(respawn), [_position], _player] call CBA_fnc_targetEvent;
+  [QGVAR(respawn), [_position, _loadout], _player] call CBA_fnc_targetEvent;
 };
 
 deleteVehicle _logic;

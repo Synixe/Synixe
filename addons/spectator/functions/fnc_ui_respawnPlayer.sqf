@@ -29,6 +29,7 @@ private _listbox = _display displayCtrl 16189;
 } forEach ([] call CBA_fnc_players);
 
 _listbox lbSetCurSel 0;
+(_display displayCtrl 16188) cbSetChecked (_logic getVariable ["keepLoadout",false]);
 
 private _fnc_onKeyUp = {
   params ["_display"];
@@ -62,6 +63,8 @@ private _fnc_onUnload = {
 
   private _logic = missionNamespace getVariable ["BIS_fnc_initCuratorAttributes_target", objnull];
   if (isNull _logic) exitWith {};
+
+    _logic setVariable ["keepLoadout", cbChecked (_display displayCtrl 16188)];
 };
 
 private _fnc_onConfirm = {
@@ -76,8 +79,9 @@ private _fnc_onConfirm = {
   private _lb = _display displayCtrl 16189;
 
   private _uid = _lb lbData (lbCurSel _lb);
+  private _loadout = cbChecked (_display displayCtrl 16188);
 
-  [_logic, _uid] call FUNC(moduleRespawnPlayer);
+  [_logic, _uid, _loadout] call FUNC(moduleRespawnPlayer);
 };
 
 _display displayAddEventHandler ["KeyUp", _fnc_onKeyUp];
