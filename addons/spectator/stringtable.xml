@@ -11,10 +11,10 @@
     <Key ID="STR_synixe_spectator_ModuleRespawnPlayer_desc">
       <English>Bring a player back alive</English>
     </Key>
-    <Key ID="STR_synixe_spectator_ModuleRespawnPlayer">
+    <Key ID="STR_synixe_spectator_ModuleRespawnPlayer_loadout">
       <English>Keep Loadout</English>
     </Key>
-    <Key ID="STR_synixe_spectator_ModuleRespawnPlayer_desc">
+    <Key ID="STR_synixe_spectator_ModuleRespawnPlayer_loadout_desc">
       <English>Give the player the loadout they had when they died</English>
     </Key>
   </Package>

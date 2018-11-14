@@ -1,6 +1,5 @@
 systemChat "Creating Zeus Modules";
 0 spawn {
-
   private _needAdmin = true;
   private _needCurator = true;
   private _needZeus = true;

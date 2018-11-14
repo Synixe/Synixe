@@ -4,6 +4,7 @@ class RscListbox;
 class RscPicture;
 class RscEdit;
 class RscControlsGroup;
+class RscCheckBox;
 
 class RscDisplayAttributes {
   class Controls {
@@ -76,13 +77,13 @@ class GVAR(RscRespawnPlayer): RscDisplayAttributes {
             };
             class LabelGroup: Title {
               idc = -1;
-              text = CSTRING(ModuleRespawnPlayer_group);
-              toolTip = CSTRING(ModuleRespawnPlayer_group_desc);
+              text = CSTRING(ModuleRespawnPlayer_loadout);
+              toolTip = CSTRING(ModuleRespawnPlayer_loadout_desc);
               x = W_PART(15.9);
               y = H_PART(7.1);
               w = W_PART(9);
             };
-            class UseGroup: RscCheckBox {
+            class KeepLoadout: RscCheckBox {
               idc = 16188;
               x = W_PART(25);
               y = H_PART(7.1);

@@ -29,9 +29,7 @@
     [_x, "Spectating"] call FUNC(drawInfo);
   } else {
     if (GVAR(displayRadios)) then {
-      systemChat "radios";
       if (isClass(configFile >> "CfgPatches" >> "acre_main")) then {
-        systemChat "acre";
         private _radios = "";
         private _count = 0;
         {
