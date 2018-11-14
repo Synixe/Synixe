@@ -13,3 +13,15 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
+
+class RscPictureKeepAspect;
+class RscTitles {
+  class RscMissionEnd {
+    class controls {
+      class Picture: RscPictureKeepAspect {
+        text = "\z\synixe\addons\main\media\synixe_logo_transparent_ca.paa";
+        colorText[] = {1,1,1,1};
+      };
+    };
+  };
+}

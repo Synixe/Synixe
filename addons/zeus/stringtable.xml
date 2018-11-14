@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="Synixe">
+  <Package name="Zeus">
+    <Key ID="STR_Synixe_Zeus_ZeusCategory">
+      <English>Synixe Zeus</English>
+    </Key>
+
+    <Key ID="STR_Synixe_Zeus_ModuleEndScenario">
+      <English>End Scenario</English>
+    </Key>
+    <Key ID="STR_Synixe_Zeus_ModuleEndScenario_desc">
+      <English>End the scenario with a custom end screen</English>
+    </Key>
+
+    <Key ID="STR_Synixe_Zeus_ModuleEndScenario_Title">
+      <English>Title</English>
+    </Key>
+    <Key ID="STR_Synixe_Zeus_ModuleEndScenario_Title_tooltip">
+      <English>End Screen Title</English>
+    </Key>
+    <Key ID="STR_Synixe_Zeus_ModuleEndScenario_Subtitle">
+      <English>Subtitle</English>
+    </Key>
+    <Key ID="STR_Synixe_Zeus_ModuleEndScenario_Subtitle_tooltip">
+      <English>End Screen Subtitle</English>
+    </Key>
+  </Package>
+</Project>

@@ -12,12 +12,12 @@ class CfgVehicles {
     mapSize = 1;
     author = "Brett";
     vehicleClass = "Modules";
-    category = "SYNIXE_SPECTATOR";
+    category = "SYNIXE_ZEUS";
 
     scope = 1;
     scopeCurator = 1;
 
-    displayName = "Synixe Spectator Module Base";
+    displayName = "Synixe Zeus Module Base";
 
     function = "";
     functionPriority = 1;
@@ -27,18 +27,13 @@ class CfgVehicles {
 
     class Arguments {};
     class ModuleDescription: ModuleDescription {
-      description = "Synixe Spectator Module Base";
+      description = "Synixe Zeus Module Base";
     };
   };
 
-  class GVAR(Module_RespawnPlayer): GVAR(Module_Base) {
+  class GVAR(Module_EndScenario): GVAR(Module_Base) {
     scopeCurator = 2;
-    displayName = "Respawn";
-    curatorInfoType = QGVAR(RscRespawnPlayer);
-  };
-  class GVAR(Module_KillPlayer): GVAR(Module_Base) {
-    scopeCurator = 2;
-    displayName = "Kill";
-    function = QFUNC(moduleKillPlayer);
+    displayName = "End Scenario";
+    curatorInfoType = QGVAR(RscEndScenario);
   };
 };
