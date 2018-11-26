@@ -6,14 +6,6 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 [
-  "synixe_proper_placement",
-  "CHECKBOX",
-  "Proper Placement",
-  "Synixe Zeus",
-  true
-] call CBA_Settings_fnc_init;
-
-[
   QGVAR(visibilityIndicator),
   "CHECKBOX",
   "STR_3DEN_Waypoint_AttributeCategory_Visibility", // Visiblity

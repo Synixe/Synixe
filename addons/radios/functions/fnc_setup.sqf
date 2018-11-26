@@ -12,7 +12,7 @@ if (player getVariable [QGVAR(notReceived), true] && {getMissionConfigValue [QGV
   switch (player getVariable [QEGVAR(fireteams,role), ""]) do {
     case "SL": {
       if !([player, SQUAD_RADIO] call acre_api_fnc_hasKindOfRadio) then {
-        INFO_1("- %1", SQAUD_RADIO);
+        INFO_1("- %1", SQUAD_RADIO);
         player addItem SQUAD_RADIO;
       };
       if !([player, LONGRANGE_RADIO] call acre_api_fnc_hasKindOfRadio) then {
@@ -37,10 +37,15 @@ if (player getVariable [QGVAR(notReceived), true] && {getMissionConfigValue [QGV
   INFO("- Waiting for ACRE");
   waitUntil {player call acre_api_fnc_isInitialized};
   INFO("- Setting Frequencies");
-  private _block = GVAR(callsigns) getVariable [tolower (groupId (group player)), 'foxtrot'];
+  private _block = GVAR(callsigns) getVariable [tolower (groupId (group player)), 6];
   INFO_1("-   Squad Block: %1", _block);
 
+  private _hasRifleman = false;
+  private _hasSquad = false;
+  private _hasLong = false;
+
   if ([player, RIFLEMAN_RADIO] call acre_api_fnc_hasKindOfRadio) then {
+    _hasRifleman = true;
     INFO_1("-   Setting %1", RIFLEMAN_RADIO);
     private _riflemanRadio = [RIFLEMAN_RADIO] call acre_api_fnc_getRadioByType;
     [_riflemanRadio, ((_block - 1) * 16) + ((assignedTeam player) call EFUNC(fireteams,teamNumber)) + 1] call acre_api_fnc_setRadioChannel;
@@ -48,6 +53,7 @@ if (player getVariable [QGVAR(notReceived), true] && {getMissionConfigValue [QGV
   };
 
   if ([player, SQUAD_RADIO] call acre_api_fnc_hasKindOfRadio) then {
+    _hasSquad = true;
     INFO_1("-   Setting %1", SQUAD_RADIO);
     private _squadRadio = [SQUAD_RADIO] call acre_api_fnc_getRadioByType;
     if (getMissionConfigValue [QGVAR(singleSquadnet), false]) then {
@@ -56,15 +62,24 @@ if (player getVariable [QGVAR(notReceived), true] && {getMissionConfigValue [QGV
       [_squadRadio, _block] call acre_api_fnc_setRadioChannel;
     };
     [_squadRadio, "RIGHT"] call acre_api_fnc_setRadioSpatial;
-    if ([player, RIFLEMAN_RADIO] call acre_api_fnc_hasKindOfRadio) then {
-      private _riflemanRadio = [RIFLEMAN_RADIO] call acre_api_fnc_getRadioByType;
-      [_riflemanRadio, _squadRadio] call acre_api_fnc_setMultiPushToTalkAssignment;
-    };
   };
 
   if ([player, LONGRANGE_RADIO] call acre_api_fnc_hasKindOfRadio) then {
     INFO_1("-   Setting %1", LONGRANGE_RADIO);
-    private _longRadio = [LONGRANGE_RADIO] call acre_api_fnc_getRadioByType;
-    [_longRadio, ("COMMAND" call EFUNC(common,callsignBlock))] call acre_api_fnc_setRadioChannel;
+    _hasLong = true;
+    //private _longRadio = [LONGRANGE_RADIO] call acre_api_fnc_getRadioByType;
+    //[_longRadio, ("COMMAND" call EFUNC(common,callsignBlock))] call acre_api_fnc_setRadioChannel;
   };
+
+  private _order = [];
+  if (_hasRifleman) then {
+    _order pushBack ([RIFLEMAN_RADIO] call acre_api_fnc_getRadioByType);
+  };
+  if (_hasSquad) then {
+    _order pushBack ([SQUAD_RADIO] call acre_api_fnc_getRadioByType);
+  };
+  if (_hasLong) then {
+    _order pushBack ([LONGRANGE_RADIO] call acre_api_fnc_getRadioByType);
+  };
+  INFO_2("- Setting PTT Order: %1 - %2", _order, [_order] call acre_api_fnc_setMultiPushToTalkAssignment);
 }

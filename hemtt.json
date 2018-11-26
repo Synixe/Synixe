@@ -4,7 +4,8 @@
   "author": "SynixeBrett",
   "files": [
     "mod.cpp",
-    "synixe_logo_transparent_ca.paa"
+    "synixe_logo_transparent_ca.paa",
+    "synixe_x64.dll"
   ],
   "toolchain": "armake",
   "pdrive": "R:\\Arma3Work"

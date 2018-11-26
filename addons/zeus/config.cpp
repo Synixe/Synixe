@@ -6,7 +6,7 @@ class CfgPatches {
     units[] = {QGVAR(Module_EndScenario)};
     weapons[] = {};
     requiredVersion = REQUIRED_VERSION;
-    requiredAddons[] = {};
+    requiredAddons[] = {"synixe_main"};
     author = "SynixeBrett";
     VERSION_CONFIG;
   };
@@ -23,6 +23,15 @@ class CfgFactionClasses {
 
 #include "CfgVehicles.hpp"
 #include "RscAttributes.hpp"
+
+class CfgDebriefing {
+	class End1 {
+		title = "Mission Completed";
+		subtitle = "";
+		picture = "\z\synixe\addons\main\media\synixe_logo_transparent_ca.paa";
+		pictureColor[] = {1,1,1,1};
+	};
+};
 
 class RscTitles {
   class RscMissionEnd;

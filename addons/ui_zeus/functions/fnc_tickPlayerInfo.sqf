@@ -55,7 +55,10 @@
       };
     };
     if (GVAR(displayACEMedicalLives)) then {
-      [_x, format ["Lives: %1", _x getVariable ["ace_medical_amountOfReviveLives", 0]]];
+      private _lives = _x getVariable ["ace_medical_amountOfReviveLives", 0];
+      if !(_lives isEqualTo -1) then {
+        [_x, format ["Lives: %1", lives]] call FUNC(drawInfo);
+      };
     };
     if (GVAR(displayACEMedical)) then {
       if (_x getVariable ["ACE_isUnconscious", false]) exitWith {
