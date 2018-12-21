@@ -2,7 +2,7 @@
 
 if (!hasInterface || {!isMultiplayer}) exitWith {0};
 
-player addEventHandler ["Killed", {
+player addMPEventHandler ["MPKilled", {
   player setVariable [QGVAR(loadout), getUnitLoadout player];
 }];
 
@@ -29,7 +29,7 @@ player addEventHandler ["Respawn", {
   player enableSimulation true;
   [false] call ace_spectator_fnc_setSpectator;
   if (_loadout) then {
-    player setUnitLoadout [player getVariable [QGVAR(loadout), []]];
+    player setUnitLoadout [player getVariable [QGVAR(loadout), []], true];
   };
 }] call CBA_fnc_addEventHandler;
 

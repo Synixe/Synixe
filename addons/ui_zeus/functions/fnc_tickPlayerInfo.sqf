@@ -21,8 +21,8 @@
     [_x, format ["FPS: %1", str (_x getVariable [QGVAR(fps), 0])]] call FUNC(drawInfo);
   };
   if (GVAR(displayTeam)) then {
-    private _team = _x getVariable [QGVAR(team), "MAIN"];
-    private _color = (_team call EFUNC(fireteams,teamNumber)) call EFUNC(fireteams,teamColorValues);
+    private _team = assignedTeam _x;
+    private _color = (_team call EFUNC(fireteams,teamNumber)) call EFUNC(fireteams,teamColor);
     [_x, _team, _color] call FUNC(drawInfo);
   };
   if (_x getVariable ["ace_spectator_isSet", false]) then {
