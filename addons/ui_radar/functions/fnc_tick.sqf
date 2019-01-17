@@ -5,7 +5,7 @@ private _display = ctrlParent _script;
 private _control = _display getVariable QGVAR(radar);
 private _markers = _control getVariable QGVAR(markers);
 
-if (!EGVAR(ui,ShowRadar) || { call EFUNC(common,inZeus) } ) then {
+if (!EGVAR(ui,ShowRadar) || { call EFUNC(common,inZeus) } || { vehicle ace_player != ace_player } ) then {
   _control ctrlShow false;
   {
     _x ctrlShow false;

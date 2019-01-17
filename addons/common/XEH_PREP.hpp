@@ -1,8 +1,11 @@
+PREP(dec2hex);
 PREP(disableChat);
+PREP(discord);
 PREP(giveEarplugs);
 PREP(inZeus);
 PREP(inZeusScreenshot);
 PREP(itemName);
+PREP(joinServer);
 PREP(screenshot);
 PREP(selectedFaction);
 PREP(setCBAKey);
