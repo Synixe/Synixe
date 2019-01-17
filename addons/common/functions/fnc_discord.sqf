@@ -4,24 +4,20 @@
 //"synixe" callExtension ["setup", [getPlayerUID player]];
 "synixe" callExtension "setup";
 
-private _role = "http://synixe.com";
+private _role = "https://synixe.com";
 private _mission = "";
 
-if (call FUNC(inMainMenu)) then {
-  _mission = "Main Menu";
+if (isServer) then {
+  _mission = "Editing Missions";
 } else {
-  if (isServer) then {
+  if (roleDescription player != "") then {
+    _role = roleDescription player;
+  };
+  _mission = missionName;
+  if (_mission == "tempMissionSP") then {
     _mission = "Editing Missions";
   } else {
-    if (roleDescription player != "") then {
-      _role = roleDescription player;
-    };
-    _mission = missionName;
-    if (_mission == "tempMissionSP") then {
-      _mission = "Editing Missions";
-    } else {
-      _mission = briefingName;
-    };
+    _mission = briefingName;
   };
 };
 

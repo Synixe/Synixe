@@ -18,11 +18,11 @@
     [_x, roleDescription _x] call FUNC(drawInfo);
   };
   if (GVAR(displayFps)) then {
-    [_x, format ["FPS: %1", str (_x getVariable [QGVAR(fps), 0])]] call FUNC(drawInfo);
+    [_x, format ["%1 FPS", str (_x getVariable [QGVAR(fps), 0])]] call FUNC(drawInfo);
   };
   if (GVAR(displayTeam)) then {
     private _team = assignedTeam _x;
-    private _color = (_team call EFUNC(fireteams,teamNumber)) call EFUNC(fireteams,teamColor);
+    private _color = _team call EFUNC(ui,teamColor);
     [_x, _team, _color] call FUNC(drawInfo);
   };
   if (_x getVariable ["ace_spectator_isSet", false]) then {
@@ -30,20 +30,19 @@
   } else {
     if (GVAR(displayRadios)) then {
       if (isClass(configFile >> "CfgPatches" >> "acre_main")) then {
-        private _radios = "";
-        private _count = 0;
+        private _unit = _x;
         {
-          if (_count > 0) then {
-            _radios = _radios + ", ";
+          private _name = _x#0 splitString "_";
+          _name = _name select ((count _name) - 3);
+          _name = [_name, "prc", ""] call GOM_fnc_replaceInString;
+          private _freq = _x#1;
+          if (_name isEqualTo "343") then {
+            private _block = floor (_freq / 16);
+            private _channel = _freq - _block * 16;
+            _freq = format ["%1-%2", _block + 1, _channel];
           };
-          _radios = _radios + (_x call EFUNC(common,itemName));
-          _count = _count + 1;
+          [_unit, format ["%1: %2", _name, _freq]] call FUNC(drawInfo);
         } forEach (_x getVariable [QGVAR(radios), []]);
-        if (_radios isEqualTo "") then {
-          [_x, "No Radio"] call FUNC(drawInfo);
-        } else {
-          [_x, _radios] call FUNC(drawInfo);
-        };
       };
       if (isClass(configFile >> "CfgPatches" >> "tfar_core")) then {
         private _asw = _x getVariable [QGVAR(asw), ""];

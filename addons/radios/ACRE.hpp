@@ -6,6 +6,8 @@ class Babel {
     fr = "French";
     gr = "Greek";
     ru = "Russian";
+    vi = "Vietnamese";
+    uk = "Ukrainian";
   };
   class Spoken {
     west[] = {"en"};
@@ -20,7 +22,7 @@ class RadioPresets {
     CHANNEL(1,ALPHA);
     CHANNEL(2,BRAVO);
     CHANNEL(3,CHARLIE);
-    CHANNEL(4,FOXTROT);
+    CHANNEL(4,DELTA);
     CHANNEL(5,ECHO);
     CHANNEL(6,FOXTROT);
     CHANNEL(7,COMMAND);

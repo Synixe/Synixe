@@ -18,17 +18,18 @@
 
 params ["_team", ["_alpha", 1]];
 
-private _ret = [1, 1, 1, _alpha];
+private _ret = ace_nametags_nametagColorMain;
 
-switch (_team) do {
-  case "RED";
-  case 2: {_ret = [1, 0, 0, _alpha];};
-  case "GREEN";
-  case 3: {_ret = [0, 1, 0, _alpha];};
-  case "BLUE";
-  case 4: {_ret = [0.1, 0.1, 1, _alpha];};
-  case "YELLOW";
-  case 5: {_ret = [1, 1, 0, _alpha];};
+switch (toLower (format ["%1", _team])) do {
+  case "red";
+  case "2": {_ret = ace_nametags_nametagColorRed;};
+  case "green";
+  case "3": {_ret = ace_nametags_nametagColorGreen;};
+  case "blue";
+  case "4": {_ret = ace_nametags_nametagColorBlue;};
+  case "yellow";
+  case "5": {_ret = ace_nametags_nametagColorYellow;};
 };
 
+_ret set [3, _alpha];
 _ret

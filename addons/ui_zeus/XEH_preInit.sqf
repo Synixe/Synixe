@@ -5,6 +5,13 @@ PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
 
+GOM_fnc_replaceInString = {
+  params ["_string","_find","_replaceWith"];
+  _pos = (_string find _find);
+  if (_pos isEqualTo -1) exitWith {_string};
+  [[(_string select [0,_pos]),_replaceWith,_string select [_pos + count _find,count _string]] joinString "",_find,_replaceWith] call GOM_fnc_replaceInString;
+};
+
 [
   QGVAR(visibilityIndicator),
   "CHECKBOX",

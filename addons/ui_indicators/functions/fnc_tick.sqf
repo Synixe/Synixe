@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+if (call EFUNC(common,inZeus)) exitWith {};
+
 private _alphaClamp = NIGHT_ALPHA + (sunOrMoon * DAY_ALPHA);
 
 private _units = allUnits - [ace_player];

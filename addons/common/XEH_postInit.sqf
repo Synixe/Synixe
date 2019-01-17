@@ -4,7 +4,7 @@ if (!hasInterface) exitWith {0};
 
 player call FUNC(giveEarplugs);
 ace_hearing_disableVolumeUpdate = true;
-spawn FUNC(discord);
+0 spawn FUNC(discord);
 
 if (!isMultiplayer) exitWith {0};
 
