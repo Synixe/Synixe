@@ -35,7 +35,7 @@ if (player getVariable [QGVAR(notReceived), true] && {getMissionConfigValue [QGV
   // may not be needed
   sleep 1;
   INFO("- Waiting for ACRE");
-  waitUntil {player call acre_api_fnc_isInitialized};
+  waitUntil {call acre_api_fnc_isInitialized};
   INFO("- Setting Frequencies");
   private _block = GVAR(callsigns) getVariable [tolower (groupId (group player)), 6];
   INFO_1("-   Squad Block: %1", _block);

@@ -1,1 +1,0 @@
-#include "\z\synixe\addons\ui_indicators\script_component.hpp"

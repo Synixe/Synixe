@@ -28,9 +28,9 @@ class RadioPresets {
     CHANNEL(7,COMMAND);
     CHANNEL(8,INTEL);
     CHANNEL(9,TRANSPORT);
-    CHANNEL(10,AIR CONTROL);
-    CHANNEL(11,SUPPORT);
-    CHANNEL(12,MEDICAL);
+    CHANNEL(10,SUPPORT);
+    CHANNEL(11,MEDICAL);
+    CHANNEL(12,ATC);
   };
   class police {
     CHANNEL(1,DISPATCH);
@@ -57,24 +57,24 @@ class RadioCallsigns {
   spectre = 8;
 
   // TRANSPORT -- APC || Car
-  coyote = 10;
-  badget = 10;
-  wolf = 10;
+  coyote = 9;
+  badget = 9;
+  wolf = 9;
 
   // AIR CONTROL -- CAS || Gunships
-  torch = 12;
-  cougar = 12;
-  raptor = 12;
+  torch = 10;
+  cougar = 10;
+  raptor = 10;
 
   // SUPPORT -- Artillery || Mortar
-  hammer = 15;
-  anvil = 15;
-  patrot = 15;
+  hammer = 10;
+  anvil = 10;
+  patrot = 10;
 
   // MEDICAL -- Medevac Teams, Search && Rescue Teams
-  medical = 16;
-  angel = 16;
-  guardian = 16;
+  medical = 11;
+  angel = 11;
+  guardian = 11;
 
   // APCO Project 2 -- Police
   adam = 1;
