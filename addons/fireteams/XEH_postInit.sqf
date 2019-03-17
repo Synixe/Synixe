@@ -6,19 +6,11 @@
 }] call CBA_fnc_addEventHandler;
 
 if (isServer) then {
-  0 spawn {
-    sleep 3;
+  [QGVAR(playerJoined), {
+    params ["_name", "_unit"];
+    INFO_2("Person %1 joined as %2, processing groups", _name, _unit);
     call FUNC(organize);
-
-    [QGVAR(playerJoined), {
-      params ["_name", "_unit"];
-      INFO_2("Person %1 joined as %2, processing groups", _name, _unit);
-      0 spawn {
-        sleep 5;
-        call FUNC(organize);
-      };
-    }] call CBA_fnc_addEventHandler;
-  };
+  }] call CBA_fnc_addEventHandler;
 };
 
 if (hasInterface) then {

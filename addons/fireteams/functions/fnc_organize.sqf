@@ -17,12 +17,6 @@
     {
       if !(_x getVariable [QGVAR(processed), false]) then {
         INFO_1("-   Processing %1", _x);
-        if (leader _group isEqualTo _x) then {
-          if (missionNamespace getVariable [format["leader_%1", groupId _group], objNull] isEqualTo objNull) then {
-            missionNamespace setVariable [format["leader_%1", groupId _group], _x];
-            _x setVariable [QGVAR(role), "TL", true];
-          };
-        };
         if (_parent isEqualTo grpNull) then {
           _parent = createGroup [side _group, true];
           _parent setGroupId [_parentGroup];
@@ -30,7 +24,7 @@
         [_x] joinSilent _parent;
         [_x, _team call FUNC(teamColor)] spawn {
           params ["_unit", "_team"];
-          sleep 0.5;
+          sleep 1;
           _unit assignTeam _team;
         };
         [QGVAR(groupChange), [_x, _team call FUNC(teamColor)], _x] call CBA_fnc_targetEvent;
@@ -40,7 +34,6 @@
     } forEach units _group;
   } else {
     INFO_1("Ignoring Group: %1", groupId _group);
-    (leader _group) setVariable [QGVAR(role), "SL", true];
     {
       INFO_1("- Processing %1", _x);
       _x setVariable [QGVAR(processed), true];

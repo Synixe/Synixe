@@ -1,7 +1,7 @@
 class Babel {
   class Languages {
-    ar = "Arabic";
     en = "English";
+    ar = "Arabic";
     fa = "Farsi";
     fr = "French";
     gr = "Greek";

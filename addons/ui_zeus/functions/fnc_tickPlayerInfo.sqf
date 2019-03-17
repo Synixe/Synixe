@@ -7,10 +7,16 @@
  */
 
 {
-  private _distance = curatorCamera distance _x;
-  if (_distance > 15 || {[objNull, "VIEW"] checkVisibility [eyePos curatorCamera, aimPos _x] < 0.25}) exitWith {1};
-
   _x setVariable [QGVAR(offset), -10];
+
+  private _distance = curatorCamera distance _x;
+  if (_distance > 15) exitWith {
+    [_x, "TOO FAR"] call FUNC(drawInfo);
+  };
+  if ([objNull, "VIEW"] checkVisibility [eyePos curatorCamera, aimPos _x] < 0.25) exitWith {
+    [_x, "HIDDEN"] call FUNC(drawInfo);
+  };
+
   if (GVAR(displayName)) then {
     [_x, name _x] call FUNC(drawInfo);
   };
@@ -56,7 +62,7 @@
     if (GVAR(displayACEMedicalLives)) then {
       private _lives = _x getVariable ["ace_medical_amountOfReviveLives", 0];
       if !(_lives isEqualTo -1) then {
-        [_x, format ["Lives: %1", lives]] call FUNC(drawInfo);
+        [_x, format ["Lives: %1", _lives]] call FUNC(drawInfo);
       };
     };
     if (GVAR(displayACEMedical)) then {
