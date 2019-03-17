@@ -1,0 +1,18 @@
+name = "Synixe"
+prefix = "synixe"
+author = "SynixeBrett"
+version = "5.8.0.0"
+files = ["mod.cpp", "synixe_logo_transparent_ca.paa", "synixe_x64.dll"]
+include = ["./include"]
+
+postbuild = ["!extension"]
+
+[scripts.extension]
+show_output = true
+steps_windows = [
+    "cd extension && cargo build --release",
+    "cp ./extension/target/release/synixe.dll ./synixe_x64.dll"
+]
+steps_linux = [
+    "echo \"Unable to build extension on Linux\""
+]

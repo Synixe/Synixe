@@ -2,7 +2,7 @@
 
 class CfgPatches {
   class ADDON {
-    name = COMPONENT;
+    name = QUOTE(COMPONENT);
     units[] = {QGVAR(Module_RespawnPlayer), QGVAR(Module_KillPlayer)};
     weapons[] = {};
     requiredVersion = REQUIRED_VERSION;

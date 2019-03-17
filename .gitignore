@@ -4,3 +4,6 @@ releases
 *.biprivatekey
 tools/
 *.tmp
+hemtt
+*.dll
+*.so

@@ -15,7 +15,7 @@ class RscInGameUI {
 		//class Controls;
 	};
   class ITC_Land_AR2I_RscOptics_UAV_gunner: RscOptics_UAV_gunner {
-		onLoad = "uiNamespace setVariable ['ITC_Land_AR2I_RscOptics_UAV_gunner', _this select 0]; ['ITC_Land_ar2i_onLoadTurretDisplay', []] call CBA_fnc_localEvent;";		
+		onLoad = "uiNamespace setVariable ['ITC_Land_AR2I_RscOptics_UAV_gunner', _this select 0]; ['ITC_Land_ar2i_onLoadTurretDisplay', []] call CBA_fnc_localEvent;";
 		controls[] = {"ITC_Land_AR2i_IGUI_elements_group"};
 		idd = 512;
 		class ITC_Land_AR2i_IGUI_elements_group: CA_IGUI_elements_group {
@@ -235,22 +235,22 @@ class RscInGameUI {
 					w = "3.5 * 		(0.01875 * SafezoneH)";
 					h = "1.5 * 		(0.025 * SafezoneH)";
 				};
-				class ITC_Land_AR2i_NArr_txt: RscPicture { 
+				class ITC_Land_AR2i_NArr_txt: RscPicture {
 				  idc = 75019;
 				  text = "itc_land_veh_darter\data\n_txt.paa";
-					x = 0.659844 * safezoneW;
-					y = 0.159 * safezoneH;
-					w = 0.075;
-					h = 0.1;
+					x = "0.659844 * safezoneW";
+					y = "0.159 * safezoneH";
+					w = "0.075";
+					h = "0.1";
 				};
 				class ITC_Land_AR2i_NArr_img: RscPicture {
 				  idc = 75020;
 				  text = "itc_land_veh_darter\data\n_arr.paa";
-					x = 0.659844 * safezoneW;
-					y = 0.159 * safezoneH;
-					w = 0.075;
-					h = 0.1;
-				};				
+					x = "0.659844 * safezoneW";
+					y = "0.159 * safezoneH";
+					w = "0.075";
+					h = "0.1";
+				};
 			};
 		};
 	};
