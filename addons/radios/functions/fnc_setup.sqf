@@ -27,7 +27,7 @@ if (player getVariable [QGVAR(notReceived), true] && {getMissionConfigValue [QGV
       };
     };
   };
-  player setVariable [QGVAR(notReceived), true];
+  player setVariable [QGVAR(notReceived), false];
 };
 
 0 spawn {
@@ -35,7 +35,7 @@ if (player getVariable [QGVAR(notReceived), true] && {getMissionConfigValue [QGV
   // may not be needed
   sleep 1;
   INFO("- Waiting for ACRE");
-  waitUntil {call acre_api_fnc_isInitialized};
+  waitUntil {[] call acre_api_fnc_isInitialized};
   INFO("- Setting Frequencies");
   private _block = GVAR(callsigns) getVariable [tolower (groupId (group player)), 6];
   INFO_1("-   Squad Block: %1", _block);
@@ -82,4 +82,4 @@ if (player getVariable [QGVAR(notReceived), true] && {getMissionConfigValue [QGV
     _order pushBack ([LONGRANGE_RADIO] call acre_api_fnc_getRadioByType);
   };
   INFO_2("- Setting PTT Order: %1 - %2", _order, [_order] call acre_api_fnc_setMultiPushToTalkAssignment);
-}
+};

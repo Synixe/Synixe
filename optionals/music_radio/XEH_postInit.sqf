@@ -6,7 +6,7 @@ if (hasInterface && profileName == "RadioBot") then {
   player enableSimulationGlobal false;
   player hideObjectGlobal true;
   [{
-    call acre_api_fnc_isInitialized
+    [] call acre_api_fnc_isInitialized
   }, {
     player setUnitLoadout [[],[],[],[],[],["B_AssaultPack_blk",[["ACRE_PRC117F",1]]],"","",[],["","","","","",""]];
     0 spawn {

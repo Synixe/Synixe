@@ -1,8 +1,8 @@
 #define MAP_ITEM(ID) \
   class synixe_map_##ID : synixe_map { \
     scope = 1; \
-    displayName = Map ID; \
-    descriptionShort = Unique Map ID; \
+    displayName = QUOTE(Map ID); \
+    descriptionShort = QUOTE(Unique Map ID); \
   }
 
 class CfgWeapons {

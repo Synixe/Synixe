@@ -17,6 +17,10 @@
     {
       if !(_x getVariable [QGVAR(processed), false]) then {
         INFO_1("-   Processing %1", _x);
+        if (((((format ["%1", _x] splitString ":")#1) splitString " ")#0) == "1") then {
+          missionNamespace setVariable [format["leader_%1", groupId _group], _x];
+          _x setVariable [QGVAR(role), "TL", true];
+        };
         if (_parent isEqualTo grpNull) then {
           _parent = createGroup [side _group, true];
           _parent setGroupId [_parentGroup];
@@ -35,9 +39,12 @@
   } else {
     INFO_1("Ignoring Group: %1", groupId _group);
     {
-      INFO_1("- Processing %1", _x);
-      _x setVariable [QGVAR(processed), true];
-      [QGVAR(processed), [_x], _x] call CBA_fnc_targetEvent;
+      (leader _group) setVariable [QGVAR(role), "SL", true];
+      if !(_x getVariable [QGVAR(processed), false]) then {
+        INFO_1("- Processing %1", _x);
+        _x setVariable [QGVAR(processed), true];
+        [QGVAR(processed), [_x], _x] call CBA_fnc_targetEvent;
+      };
     } foreach units _group;
   };
 } forEach allGroups;

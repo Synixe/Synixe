@@ -9,4 +9,5 @@ PREP(itemName);
 PREP(joinServer);
 PREP(screenshot);
 PREP(selectedFaction);
+PREP(setCBAKey);
 PREP(zeusAttributes);
