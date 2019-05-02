@@ -1,5 +1,5 @@
 name = "Synixe"
-prefix = ""
+prefix = "synixe"
 author = "SynixeBrett"
 files = ["mod.cpp", "synixe_logo_transparent_ca.paa", "synixe_x64.dll"]
 include = ["./include"]
@@ -11,7 +11,7 @@ releasebuild = ["@zip synixe"]
 show_output = true
 steps_windows = [
     "cd extension && cargo build --release",
-    "copy ./extension/target/release/synixe.dll ./synixe_x64.dll"
+    "cp ./extension/target/release/synixe.dll ./synixe_x64.dll"
 ]
 steps_linux = [
     "echo \"Unable to build extension on Linux\""
