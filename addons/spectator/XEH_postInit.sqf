@@ -1,9 +1,21 @@
 #include "script_component.hpp"
 
+if (isServer) then {
+  GVAR(loadouts) = true call CBA_fnc_createNamespace;
+  publicVariable QGVAR(loadouts);
+  
+  addMissionEventHandler ["HandleDisconnect", {
+	  params ["_unit", "_id", "_uid", "_name"];
+	  GVAR(loadouts) setVariable [QGVAR(_id), getUnitLoadout _unit, true];
+  }];
+};
+
 if (!hasInterface || {!isMultiplayer}) exitWith {0};
 
+player setUnitLoadout [GVAR(loadouts) getVariable [QGVAR(getPlayerUID player), getUnitLoadout player], true];
+
 player addMPEventHandler ["MPKilled", {
-  player setVariable [QGVAR(loadout), getUnitLoadout player];
+  GVAR(loadouts) setVariable [QGVAR(getPlayerUID player), getUnitLoadout player, true];
 }];
 
 // Switch to spectator upon death
@@ -29,7 +41,7 @@ player addEventHandler ["Respawn", {
   player enableSimulation true;
   [false] call ace_spectator_fnc_setSpectator;
   if (_loadout) then {
-    player setUnitLoadout [player getVariable [QGVAR(loadout), []], true];
+    player setUnitLoadout [GVAR(loadouts) getVariable [QGVAR(getPlayerUID player), []], true];
   };
 }] call CBA_fnc_addEventHandler;
 
