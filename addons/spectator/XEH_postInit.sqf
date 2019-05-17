@@ -6,7 +6,7 @@ if (isServer) then {
   
   addMissionEventHandler ["HandleDisconnect", {
 	  params ["_unit", "_id", "_uid", "_name"];
-	  GVAR(loadouts) setVariable [QGVAR(_id), getUnitLoadout _unit, true];
+	  GVAR(loadouts) setVariable [QGVAR(_uid), getUnitLoadout _unit, true];
   }];
 };
 
