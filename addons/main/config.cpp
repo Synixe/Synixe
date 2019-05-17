@@ -28,6 +28,12 @@ class RscDisplayStart: RscStandardDisplay {
   };
 };
 
+class Extended_DisplayLoad_EventHandlers {
+  class RscCustomInfoMiniMap {
+    synixe_nogps = "params ['_display']; { if ((vehicle ace_player) isEqualTo ace_player) then { _x ctrlShow false; } } forEach allControls _display;";
+  };
+};
+
 class CfgWorlds {
   class CAWorld;
 
