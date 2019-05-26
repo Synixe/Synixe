@@ -6,16 +6,17 @@ if (isServer) then {
   
   addMissionEventHandler ["HandleDisconnect", {
 	  params ["_unit", "_id", "_uid", "_name"];
-	  GVAR(loadouts) setVariable [QGVAR(_uid), getUnitLoadout _unit, true];
+    LOG_2("Saving loadout of uid %1 with name %2", _uid, name _unit);
+	  GVAR(loadouts) setVariable [_uid, getUnitLoadout _unit, true];
   }];
 };
 
 if (!hasInterface || {!isMultiplayer}) exitWith {0};
 
-player setUnitLoadout [GVAR(loadouts) getVariable [QGVAR(getPlayerUID player), getUnitLoadout player], true];
+player setUnitLoadout [GVAR(loadouts) getVariable [getPlayerUID player, getUnitLoadout player]];
 
 player addMPEventHandler ["MPKilled", {
-  GVAR(loadouts) setVariable [QGVAR(getPlayerUID player), getUnitLoadout player, true];
+  GVAR(loadouts) setVariable [getPlayerUID player, getUnitLoadout player, true];
 }];
 
 // Switch to spectator upon death
@@ -41,7 +42,7 @@ player addEventHandler ["Respawn", {
   player enableSimulation true;
   [false] call ace_spectator_fnc_setSpectator;
   if (_loadout) then {
-    player setUnitLoadout [GVAR(loadouts) getVariable [QGVAR(getPlayerUID player), []], true];
+    player setUnitLoadout [GVAR(loadouts) getVariable [getPlayerUID player, []], true];
   };
 }] call CBA_fnc_addEventHandler;
 

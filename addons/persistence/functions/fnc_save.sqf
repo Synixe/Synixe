@@ -54,7 +54,10 @@ private _groups = [];
 
 {
   private _ignore = false;
-  if ((typeOf _x) in _blacklist || isPlayer _x) then {
+  if ((typeOf _x) in _blacklist || {isPlayer _x}) then {
+    _ignore = true;
+  };
+  if (_x getVariable [QGVAR(ignore), false]) then {
     _ignore = true;
   };
   if (!_ignore && {(_x distance _position <= _radius) || _radius == -1}) then {
@@ -131,8 +134,8 @@ private _first = true;
   } else {
     _first = false;
   };
-  _output pushBack format ["[""%1"", %2, %3, %4, %5]",
-    (typeOf _x), (position _x), (getPosWorld _x), (vectorDir _x), (vectorUp _x)
+  _output pushBack format ["[""%1"", %2, %3, %4, %5, %6]",
+    (typeOf _x), (position _x), (getPosWorld _x), (vectorDir _x), (vectorUp _x), _x call FUNC(containers)
   ];
 } forEach _emptyObjects;
 _output pushBack "]]";

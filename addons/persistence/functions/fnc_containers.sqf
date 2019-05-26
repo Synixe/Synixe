@@ -2,12 +2,15 @@
 
 params ["_container"];
 
-systemChat format ["Checking cargo for %1", _container];
+private _weaponsItems = weaponsItemsCargo _container;
+if (isNull _container) then {
+  _weaponsItems = [];
+};
 
 private _tree = [
   [
     getMagazineCargo _container,
-    getWeaponCargo _container,
+    _weaponsItems,
     getItemCargo _container
   ]
 ];
