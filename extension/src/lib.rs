@@ -1,8 +1,6 @@
-extern crate enigo;
-use enigo::{Enigo, KeyboardControllable, Key};
-
-extern crate discord_rpc_client;
 use discord_rpc_client::Client as DiscordRPC;
+use enigo::{Enigo, KeyboardControllable, Key};
+use webbrowser;
 
 #[macro_use]
 extern crate lazy_static;
@@ -39,15 +37,15 @@ pub unsafe extern "C" fn RVExtension(output: *mut c_char, output_size: usize, fu
   let r_function = CStr::from_ptr(function).to_str().unwrap();
   match r_function {
     "screenshot" => {
-      //Take Steam Screenshot
+      // Take Steam Screenshot
       let mut enigo = Enigo::new();
       enigo.key_click(Key::F12);
     },
     "setup" => {
-      //Setup Discord RPC
+      // Setup Discord RPC
       STARTED = true;
       RPCM.lock().unwrap().start();
-      //Save timestamp
+      // Save timestamp
       TIMESTAMP = SystemTime::now().duration_since(SystemTime::UNIX_EPOCH).unwrap().as_secs();
       let o = get_c("DiscordRPC started");
       strncpy(output, o, size);
@@ -65,7 +63,7 @@ pub unsafe extern "C" fn RVExtensionArgs(output: *mut c_char, output_size: usize
   let r_function = CStr::from_ptr(function).to_str().unwrap();
   match r_function {
     "update" => {
-      //Update Discord RPC
+      // Update Discord RPC
       if arg_count != 4 {
         let o = get_c(format!("Unexpected arg count: {}", arg_count));
         strncpy(output, o, size);
@@ -93,6 +91,17 @@ pub unsafe extern "C" fn RVExtensionArgs(output: *mut c_char, output_size: usize
           let o = get_c("DiscordRPC not started");
           strncpy(output, o, size);
         }
+      }
+    },
+    "browser" => {
+      // Open a URL in the browser
+      if arg_count != 1 {
+        let o = get_c(format!("Unexpected arg count: {}", arg_count));
+        strncpy(output, o, size);
+      } else {
+        let argv: &[*mut c_char; 1] = std::mem::transmute(args);
+        let url: String = CStr::from_ptr(argv[0]).to_str().unwrap().replace("\"","");
+        webbrowser::open(&url);
       }
     },
     _ => {

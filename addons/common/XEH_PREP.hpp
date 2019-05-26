@@ -1,4 +1,5 @@
 PREP(breath);
+PREP(browser);
 PREP(dec2hex);
 PREP(disableChat);
 PREP(discord);
