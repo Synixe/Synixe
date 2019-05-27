@@ -15,7 +15,6 @@ clearMagazineCargoGlobal _container;
 clearWeaponCargoGlobal _container;
 {
   //_container addWeaponCargoGlobal [_x, _standard select 1 select 1 select _forEachIndex];
-  systemChat format ["loading %1", _x];
   _x params ["_weapon", "_supp", "_laser", "_optic", "_mag", "_bipod"];
   if !(count _x == 6) then {
     _x params ["", "", "", "", "", "_ugl", "_bipod2"];
@@ -25,12 +24,10 @@ clearWeaponCargoGlobal _container;
   _container addWeaponCargo [_weapon, 1];
   {
     if !(_x isEqualTo "") then {
-      systemChat format ["adding %1 to %2", _x, _container];
       _container addItemCargoGlobal [_x, 1];
     };
   } forEach [_supp, _laser, _optic, _bipod];
   if !(_mag isEqualTo []) then {
-    systemChat format ["adding %1", _mag];
     _container addMagazineAmmoCargo [_mag select 0, 1, _mag select 1];
   };
   player removeWeapon _weapon;
