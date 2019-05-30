@@ -58,7 +58,7 @@ class RadioCallsigns {
 
   // TRANSPORT -- APC || Car
   coyote = 9;
-  badget = 9;
+  badger = 9;
   wolf = 9;
 
   // AIR CONTROL -- CAS || Gunships
@@ -69,7 +69,7 @@ class RadioCallsigns {
   // SUPPORT -- Artillery || Mortar
   hammer = 10;
   anvil = 10;
-  patrot = 10;
+  patriot = 10;
 
   // MEDICAL -- Medevac Teams, Search && Rescue Teams
   medical = 11;
