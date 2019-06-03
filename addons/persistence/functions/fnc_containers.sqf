@@ -3,7 +3,7 @@
 params ["_container"];
 
 private _weaponsItems = weaponsItemsCargo _container;
-if (isNull _container) then {
+if (isNull _weaponsItems) then {
   _weaponsItems = [];
 };
 
