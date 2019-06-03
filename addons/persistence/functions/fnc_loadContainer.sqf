@@ -14,14 +14,13 @@ clearMagazineCargoGlobal _container;
 //Weapon Cargo
 clearWeaponCargoGlobal _container;
 {
-  //_container addWeaponCargoGlobal [_x, _standard select 1 select 1 select _forEachIndex];
   _x params ["_weapon", "_supp", "_laser", "_optic", "_mag", "_bipod"];
   if !(count _x == 6) then {
     _x params ["", "", "", "", "", "_ugl", "_bipod2"];
     _container addMagazineAmmoCargo [_ugl select 0, 1, _ugl select 1];
     _bipod = _bipod2;
   };
-  _container addWeaponCargo [_weapon, 1];
+  _container addWeaponCargoGlobal [_weapon, 1];
   {
     if !(_x isEqualTo "") then {
       _container addItemCargoGlobal [_x, 1];
@@ -30,7 +29,6 @@ clearWeaponCargoGlobal _container;
   if !(_mag isEqualTo []) then {
     _container addMagazineAmmoCargo [_mag select 0, 1, _mag select 1];
   };
-  player removeWeapon _weapon;
 } forEach (_standard select 1);
 
 //Item Cargo
@@ -53,7 +51,7 @@ clearBackpackCargoGlobal _container;
         !_found &&
         { (_x select 1) getVariable [QGVAR(NOEDIT), true] }
       ) then {
-        [_x select 1, (_items)] call _addCargoForContainer;
+        [_x select 1, (_items)] call FUNC(loadContainer);
         (_x select 1) setVariable [QGVAR(NOEDIT), false];
         _found = true;
       };

@@ -2,15 +2,10 @@
 
 params ["_container"];
 
-private _weaponsItems = weaponsItemsCargo _container;
-if (isNull _weaponsItems) then {
-  _weaponsItems = [];
-};
-
 private _tree = [
   [
     getMagazineCargo _container,
-    _weaponsItems,
+    weaponsItemsCargo _container,
     getItemCargo _container
   ]
 ];
