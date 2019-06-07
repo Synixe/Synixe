@@ -10,7 +10,7 @@ INFO("Running radio setup");
   waitUntil {[] call acre_api_fnc_isInitialized};
 
   if (player getVariable [QGVAR(notReceived), true] && {getMissionConfigValue [QGVAR(receiveStandard), true]}) then {
-    INFO(format ["- Giving Radios for role: %1", player getVariable [QEGVAR(fireteams,role), "RF"]]);
+    INFO_1("- Giving Radios for role: %1", player getVariable [QEGVAR(fireteams,role), "RF"]);
     if !([player, RIFLEMAN_RADIO] call acre_api_fnc_hasKindOfRadio) then {
       INFO_1("- %1", RIFLEMAN_RADIO);
       player addItem RIFLEMAN_RADIO;
@@ -37,6 +37,8 @@ INFO("Running radio setup");
     player setVariable [QGVAR(notReceived), false];
   };
 
+  waitUntil { ([] call acre_api_fnc_isInitialized) };
+
   INFO("- Setting Frequencies");
   private _block = GVAR(callsigns) getVariable [tolower (groupId (group player)), 6];
   INFO_1("-   Squad Block: %1", _block);
@@ -47,16 +49,16 @@ INFO("Running radio setup");
 
   if ([player, RIFLEMAN_RADIO] call acre_api_fnc_hasKindOfRadio) then {
     _hasRifleman = true;
-    INFO_1("-   Setting %1", RIFLEMAN_RADIO);
     private _riflemanRadio = [RIFLEMAN_RADIO] call acre_api_fnc_getRadioByType;
+    INFO_2("-   Setting %1:%2", RIFLEMAN_RADIO, _riflemanRadio);
     [_riflemanRadio, ((_block - 1) * 16) + ((assignedTeam player) call EFUNC(fireteams,teamNumber)) + 1] call acre_api_fnc_setRadioChannel;
     [_riflemanRadio, "LEFT"] call acre_api_fnc_setRadioSpatial;
   };
 
   if ([player, SQUAD_RADIO] call acre_api_fnc_hasKindOfRadio) then {
     _hasSquad = true;
-    INFO_1("-   Setting %1", SQUAD_RADIO);
     private _squadRadio = [SQUAD_RADIO] call acre_api_fnc_getRadioByType;
+    INFO_2("-   Setting %1:%2", SQUAD_RADIO, _squadRadio);
     if (getMissionConfigValue [QGVAR(singleSquadnet), false]) then {
       [_squadRadio, 1] call acre_api_fnc_setRadioChannel;
     } else {
