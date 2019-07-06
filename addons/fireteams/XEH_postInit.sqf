@@ -8,8 +8,11 @@
 if (isServer) then {
   [QGVAR(playerJoined), {
     params ["_name", "_unit"];
-    INFO_2("Person %1 joined as %2, processing groups", _name, _unit);
-    call FUNC(organize);
+    [{
+      params ["_name", "_unit"];
+      INFO_2("Person %1 joined as %2, processing groups", _name, _unit);
+      call FUNC(organize);
+    }, [_name, _unit], 2] call CBA_fnc_waitAndExecute;
   }] call CBA_fnc_addEventHandler;
 };
 
