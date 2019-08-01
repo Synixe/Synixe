@@ -42,17 +42,8 @@ if (_firstrun) then {
   //Bind Babel cycle to Shift + Space
   ["acre2$babelcyclekey", [[57,[true,false,false]]]] call EFUNC(common,setCBAKey);
 
-  //Unbind Default PPT Key
-  ["acre2$defaultpttkey", []] call EFUNC(common,setCBAKey);
-
   //Bind first radio to Caps Lock and Shift + Caps Lock
   ["acre2$altpttkey1", [[58,[false,false,false]],[58,[true,false,false]]]] call EFUNC(common,setCBAKey);
-
-  //Bind second radio to Control + Caps Lock
-  ["acre2$allpttkey2", [[58,[false,true,false]]]] call EFUNC(common,setCBAKey);
-
-  //Bind third radio to Alt + Caps Lock
-  ["acre2$allpttkey3", [[58,[false,false,true]]]] call EFUNC(common,setCBAKey);
 
   profileNamespace setVariable [QGVAR(firstSetup), false];
   saveProfileNamespace;
