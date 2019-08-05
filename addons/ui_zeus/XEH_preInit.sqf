@@ -13,14 +13,6 @@ GOM_fnc_replaceInString = {
 };
 
 [
-  QGVAR(visibilityIndicator),
-  "CHECKBOX",
-  "STR_3DEN_Waypoint_AttributeCategory_Visibility", // Visiblity
-  "Synixe Zeus",
-  true
-] call CBA_Settings_fnc_init;
-
-[
   QGVAR(displayPlayerInfo),
   "CHECKBOX",
   "Display Player Info",

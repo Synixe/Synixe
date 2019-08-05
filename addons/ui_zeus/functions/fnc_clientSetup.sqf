@@ -20,9 +20,6 @@ addMissionEventHandler ["Draw3D", {
     if (GVAR(displayPlayerInfo)) then {
       call FUNC(tickPlayerInfo);
     };
-    if (GVAR(visibilityIndicator)) then {
-      call FUNC(tickVisibility);
-    };
   };
 }];
 
