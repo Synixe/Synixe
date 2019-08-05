@@ -8,7 +8,7 @@ class CfgUnitInsignia {
 		displayName = "Ninjahipo";
 		author = "Not a damn clue (edited by Brett)";
 		texture = QPATHTOF(textures\ninja.paa);
-	}
+	};
 
 
 	class Synixe_Medic_P {
