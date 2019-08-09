@@ -10,6 +10,13 @@ class CfgUnitInsignia {
 		texture = QPATHTOF(textures\ninja.paa);
 	};
 
+    // BEAST
+    class Synixe_GoingToDie_P {
+        dispalyName = "We're all going to die";
+        author = "Some website, who knows.";
+        texture = QPATHTOF(textures\goingtodie.paa);
+    };
+
 
 	class Synixe_Medic_P {
 		displayName = "Medical";
