@@ -12,7 +12,7 @@ class CfgUnitInsignia {
 
     // BEAST
     class Synixe_GoingToDie_P {
-        dispalyName = "We're all going to die";
+        displayName = "We're all going to die";
         author = "Some website, who knows.";
         texture = QPATHTOF(textures\goingtodie.paa);
     };
