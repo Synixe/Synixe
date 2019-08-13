@@ -13,7 +13,7 @@ if (isServer) then {
 
 if (!hasInterface || {!isMultiplayer}) exitWith {0};
 
-player setUnitLoadout [GVAR(loadouts) getVariable [str (getPlayerUID player), getUnitLoadout player]];
+player setUnitLoadout [GVAR(loadouts) getVariable [str (getPlayerUID player), getUnitLoadout player], true];
 
 player addMPEventHandler ["MPKilled", {
   GVAR(loadouts) setVariable [str (getPlayerUID player), getUnitLoadout player, true];
@@ -22,12 +22,12 @@ player addMPEventHandler ["MPKilled", {
 // Switch to spectator upon death
 player addEventHandler ["Respawn", {
   params ["", "_corpse"];
+  private _pos = getPosASL player;
+  [true] call ace_spectator_fnc_setSpectator;
   player setVariable [QGVAR(dead), true, true];
   player setVariable [QGVAR(corpse), _corpse, true];
-  private _pos = getPosASL player;
   player setPosASL [0,0,5];
   player enableSimulation false;
-  [true] call ace_spectator_fnc_setSpectator;
   _pos spawn {
     sleep 0.2;
     ace_spectator_camera setPosASL _this;
