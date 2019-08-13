@@ -42,7 +42,7 @@ player addEventHandler ["Respawn", {
   player enableSimulation true;
   [false] call ace_spectator_fnc_setSpectator;
   if (_loadout) then {
-    player setUnitLoadout [GVAR(loadouts) getVariable [getPlayerUID player, []], true];
+    player setUnitLoadout [GVAR(loadouts) getVariable [str (getPlayerUID player), []], true];
   };
 }] call CBA_fnc_addEventHandler;
 
