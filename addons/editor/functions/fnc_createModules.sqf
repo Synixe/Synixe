@@ -1,9 +1,13 @@
 systemChat "Creating Zeus Modules";
 0 spawn {
   private _needAdmin = true;
-  private _needCurator = true;
-  private _needZeus = true;
   private _needHeadless = true;
+
+  private _needGameMaster = true;
+  private _needGameMasterEntity = true;
+
+  private _needSupervisor = true;
+  private _needSupervisorEntity = true;
 
   private _objects = allMissionObjects "";
   {
@@ -14,14 +18,20 @@ systemChat "Creating Zeus Modules";
           _needAdmin = false;
         };
         if (_owner == "curator") then {
-          _needZeus = false;
+          _needGameMaster = false;
+        };
+        if (_owner == "supervisor") then {
+          _needSupervisor = false;
         };
       };
       case "VirtualCurator_F": {
         private _name = (_x get3DENAttribute "name") select 0;
         if (_name == "curator") then {
-          _needCurator = false;
+          _needGameMasterEntity = false;
         };
+        if (_name == "supervisor") then {
+          _needSupervisorEntity = false;
+        }
       };
       case "HeadlessClient_F": {
         private _name = (_x get3DENAttribute "name") select 0;
@@ -39,8 +49,15 @@ systemChat "Creating Zeus Modules";
     _module set3DENAttribute ["ModuleCurator_F_Owner", "#adminLogged"];
   };
 
-  if (_needCurator) then {
+  if (_needGameMaster) then {
     // Create Curator Zeus
+    systemChat "-- Creating Curator Zeus";
+    private _module = create3DENEntity ["Logic", "ModuleCurator_F", [0, 0, 0]];
+    _module set3DENAttribute ["ModuleCurator_F_Owner", "curator"];
+  };
+
+  if (_needGameMasterEntity) then {
+    // Create Curator Entity
     systemChat "-- Creating Virtual Curator";
     private _module = create3DENEntity ["Logic", "VirtualCurator_F", [0, 0, 0]];
     _module set3DENAttribute ["name", "curator"];
@@ -49,11 +66,21 @@ systemChat "Creating Zeus Modules";
     _module set3DENAttribute ["description", "Game Master"];
   };
 
-  if (_needZeus) then {
+  if (_needSupervisor) then {
     // Create Curator Zeus
     systemChat "-- Creating Curator Zeus";
     private _module = create3DENEntity ["Logic", "ModuleCurator_F", [0, 0, 0]];
-    _module set3DENAttribute ["ModuleCurator_F_Owner", "curator"];
+    _module set3DENAttribute ["ModuleCurator_F_Owner", "supervisor"];
+  };
+
+  if (_needSupervisorEntity) then {
+    // Create Curator Entity
+    systemChat "-- Creating Virtual Curator";
+    private _module = create3DENEntity ["Logic", "VirtualCurator_F", [0, 0, 0]];
+    _module set3DENAttribute ["name", "supervisor"];
+    _module set3DENAttribute ["ControlSP", false];
+    _module set3DENAttribute ["ControlMP", true];
+    _module set3DENAttribute ["description", "Supervisor"];
   };
 
   if (_needHeadless) then {
