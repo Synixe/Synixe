@@ -1,0 +1,1 @@
+#include "\z\synixe\addons\training\script_component.hpp"
