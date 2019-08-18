@@ -6,10 +6,10 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {};
-        author = "SynixeBrett";
+        requiredAddons[] = {"imrali", "imralispring", "K9S_Teumess", "APHX_Karia"};
+        author = "AUTHOR";
         VERSION_CONFIG;
     };
 };
 
-#include "CfgEventHandlers.hpp"
+#include "CfgWorlds.hpp"

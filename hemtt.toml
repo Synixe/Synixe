@@ -1,7 +1,6 @@
 name = "Synixe"
 prefix = "synixe"
 author = "SynixeBrett"
-template = "none"
 files = ["mod.cpp", "synixe_logo_transparent_ca.paa", "synixe_x64.dll"]
 include = ["./include"]
 
