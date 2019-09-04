@@ -18,22 +18,3 @@ if (side player != sideLogic) then {
 [{time > 0 && !(isNull player)}, //Wait for player to be loaded
   FUNC(breath)
 ] call CBA_fnc_waitUntilAndExecute;
-
-GVAR(blindfoldPP) = ppEffectCreate ["ColorCorrections", 0];
-
-["loadout", {
-  private _goggles = goggles ACE_player;
-  if (_goggles isEqualTo "G_Blindfold_01_black_F") then {
-    GVAR(blindfoldPP) ppEffectAdjust [0,0,0,[0,0,0,0],[1,1,1,1],[1,1,1,1]];
-    GVAR(blindfoldPP) ppEffectCommit 0;
-    GVAR(blindfoldPP) ppEffectEnable true;
-  } else {
-    if (_goggles isEqualTo "G_Blindfold_01_white_F") then {
-      GVAR(blindfoldPP) ppEffectAdjust [0,0,0,[1,1,1,1],[1,1,1,1],[1,1,1,1]];
-      GVAR(blindfoldPP) ppEffectCommit 0;
-      GVAR(blindfoldPP) ppEffectEnable true;
-    } else {
-      GVAR(blindfoldPP) ppEffectEnable false;
-    };
-  };
-}] call CBA_fnc_addPlayerEventHandler;
