@@ -12,6 +12,8 @@ class CfgPatches {
   };
 };
 
+#include "CfgUnitInsignia.hpp"
+
 class RscStandardDisplay;
 class RscControlsGroup;
 class RscPictureKeepAspect;
