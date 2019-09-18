@@ -1,10 +1,10 @@
+class RscControlsGroup;
 class RscControlsGroupNoScrollbars;
-class RscText;
+class RscCheckBox;
+class RscEdit;
 class RscListbox;
 class RscPicture;
-class RscEdit;
-class RscControlsGroup;
-class RscCheckBox;
+class RscText;
 
 class RscDisplayAttributes {
   class Controls {
