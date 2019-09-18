@@ -1,19 +1,9 @@
-class USMC {
-    class Woodland {
-        // Becomes: USMC Woodland - Squad Leader
-        Squad_Leader = QUOTE();
+class NATO {
+    class Desert {
+        // Becomes: NATO Desert - Squad Leader
+        Squad_Leader = QUOTE([["CUP_arifle_M4A1_BUIS_desert_GL","CUP_muzzle_snds_M16","","CUP_optic_ACOG",["CUP_30Rnd_556x45_PMAG_QP_Tan",30],[],""],[],["CUP_hgun_Glock17_tan","","acc_flashlight_pistol","",["CUP_17Rnd_9x19_glock17",17],[],""],["CFP_U_FieldUniform_marpat_d",[["ACRE_PRC343",1],["ACE_elasticBandage",3],["ACE_EarPlugs",1],["ACE_morphine",3],["ACE_packingBandage",3],["ACE_CableTie",5],["ACE_microDAGR",1],["MineDetector",1],["SmokeShell",1,1],["CUP_HandGrenade_M67",1,1]]],["SP_PlateCarrier1_Tan",[["ACRE_PRC148",1],["CUP_30Rnd_556x45_PMAG_QP_Tan",7,30],["CUP_30Rnd_556x45_PMAG_QP_Tracer_Green",1,30],["SmokeShellBlue",1,1],["SmokeShellRed",1,1],["1Rnd_HE_Grenade_shell",5,1]]],["CFP_AssaultPack_MarpatDesert",[["ACE_EntrenchingTool",1],["1Rnd_SmokeRed_Grenade_shell",1,1],["UGL_FlareGreen_F",1,1],["Laserbatteries",1,1]]],"CUP_H_USMC_MICH2000_DEF_ESS_DES","CUP_PMC_Facewrap_Tan",["Laserdesignator","","","",["Laserbatteries",1],[],""],["ItemMap","B_UavTerminal","","ItemCompass","ItemWatch","CUP_NVG_PVS14"]]);
+        // Becomes: NATO Desert - AutoRifleman
+         AutoRifleman = QUOTE([["CUP_lmg_m249_pip1","muzzle_snds_m_snd_F","","CUP_optic_ElcanM145",["CUP_200Rnd_TE4_Green_Tracer_556x45_M249",200],[],""],[],["CUP_hgun_Glock17_tan","","acc_flashlight_pistol","",["CUP_17Rnd_9x19_glock17",17],[],""],["CFP_U_FieldUniform_marpat_d",[["ACRE_PRC343",1],["ACE_elasticBandage",3],["ACE_EarPlugs",1],["ACE_morphine",3],["ACE_packingBandage",3],["SmokeShell",1,1],["CUP_HandGrenade_M67",1,1]]],["SP_PlateCarrier1_Tan",[["CUP_200Rnd_TE4_Green_Tracer_556x45_M249",1,200],["MiniGrenade",1,1]]],["CFP_AssaultPack_MarpatDesert",[["CUP_200Rnd_TE4_Green_Tracer_556x45_M249",2,200]]],"CUP_H_USMC_MICH2000_DEF_ESS_DES","CUP_PMC_Facewrap_Tan",[],["ItemMap","","","ItemCompass","ItemWatch","CUP_NVG_PVS14"]])
     };
 };
 
-class Canada {
-    class TW {
-        // Becomes: Canada TW - Squad Leader
-        Squad_Leader = QUOTE();
-        // Becomes: Canada TW - Team Leader
-        Team_Leader = QUOTE();
-    };
-    class AR {
-        // Becomes: Canada AR - Squad Leader
-        Squad_Leader = QUOTE();
-    };
-};
