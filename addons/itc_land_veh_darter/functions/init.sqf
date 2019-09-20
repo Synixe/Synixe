@@ -40,10 +40,10 @@
 		   private _tgtposWorld = (screenToWorld [0.5,0.5]); 
 		   private _tgtposASL = AGLToASL _tgtposWorld;
 		   private _tgtposMGRS = [_tgtposWorld] call ace_common_fnc_getMapGridFromPos; 
-		   private _tgtposDisplayed = format ["%1 %2",_tgtposMGRS # 0,_tgtposMGRS # 1]; 
+		   private _tgtposDisplayed = format ["%1 %2",_tgtposMGRS select 0,_tgtposMGRS select 1]; 
 			
 		   private _uavpos = [position _uav] call ace_common_fnc_getMapGridFromPos; 
-		   private _uavposDisplayed = format ["%1 %2",_uavpos # 0,_uavpos # 1];  
+		   private _uavposDisplayed = format ["%1 %2",_uavpos select 0,_uavpos select 1];  
 
 		   //display grids 
 		   (_display displayCtrl 75015) ctrlSetText _tgtposDisplayed; 

@@ -17,7 +17,7 @@
     {
       if !(_x getVariable [QGVAR(processed), false]) then {
         INFO_1("-   Processing %1", _x);
-        if (((((format ["%1", _x] splitString ":")#1) splitString " ")#0) == "1") then {
+        if (((((format ["%1", _x] splitString ":") select 1) splitString " ") select 0) == "1") then {
           missionNamespace setVariable [format["leader_%1", groupId _group], _x];
           _x setVariable [QGVAR(role), "TL", true];
         };
