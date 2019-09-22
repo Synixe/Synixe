@@ -13,6 +13,7 @@ class CfgPatches {
 };
 
 #include "CfgUnitInsignia.hpp"
+#include "CfgVehicles.hpp"
 
 class RscStandardDisplay;
 class RscControlsGroup;
