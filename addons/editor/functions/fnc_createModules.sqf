@@ -45,7 +45,6 @@ if (_needAdmin) then {
   // Create Admin Zeus
   private _module = create3DENEntity ["Logic", "ModuleCurator_F", [0, 0, 0]];
   _module set3DENAttribute ["ModuleCurator_F_Owner", "#adminLogged"];
-  _module set3DENAttribute ["ModuleCurator_F_Forced", true];
 };
 
 if (_needGameMaster) then {
