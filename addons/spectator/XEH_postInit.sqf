@@ -9,6 +9,12 @@ if (isServer) then {
     LOG_2("Saving loadout of uid %1 with name %2", _uid, name _unit);
 	  GVAR(loadouts) setVariable [str _uid, getUnitLoadout _unit, true];
   }];
+
+  private _marker = "respawn";
+  if (getMarkerColor _marker isEqualTo "") then {
+    createMarker [_marker, [0,0,0]];
+    _marker setMarkerType "Empty";
+  };
 };
 
 if (!hasInterface || {!isMultiplayer}) exitWith {0};
@@ -22,11 +28,10 @@ player addMPEventHandler ["MPKilled", {
 // Switch to spectator upon death
 player addEventHandler ["Respawn", {
   params ["", "_corpse"];
-  private _pos = getPosASL player;
+  private _pos = getPosASL _corpse;
   [true] call ace_spectator_fnc_setSpectator;
   player setVariable [QGVAR(dead), true, true];
   player setVariable [QGVAR(corpse), _corpse, true];
-  player setPosASL [0,0,5];
   player enableSimulation false;
   _pos spawn {
     sleep 0.2;
