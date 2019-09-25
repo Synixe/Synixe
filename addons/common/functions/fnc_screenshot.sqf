@@ -15,9 +15,9 @@ diwako_dui_indicators_show = false;
   [_ace, _radar, _indicators] spawn {
     params ["_ace", "_radar", "_indicators"];
     disableUserInput true;
-    sleep 1;
+    sleep 0.5;
     "synixe" callExtension "screenshot";
-    sleep 1;
+    sleep 0.5;
     disableUserInput false;
     // Restore UI
     ["hideHud", _ace] call ace_common_fnc_showHud;
