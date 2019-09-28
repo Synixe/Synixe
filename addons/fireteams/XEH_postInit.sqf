@@ -14,10 +14,10 @@ if (isServer) then {
     [{
       params ["_name", "_unit"];
       INFO_2("Person %1 joined as %2, processing groups", _name, _unit);
-      if (GVAR(playerVars) getVariable [getPlayerUID _unit, []] isEqualTo []) then {
+      if (GVAR(playerVars) getVariable [str (getPlayerUID _unit), []] isEqualTo []) then {
         call FUNC(organize);
       } else {
-        (GVAR(playerVars) getVariable [getPlayerUID _unit, []]) params ["_team", "_parent"];
+        (GVAR(playerVars) getVariable [str (getPlayerUID _unit), []]) params ["_team", "_parent"];
         [_unit] joinSilent _parent;
         [_unit, _team call FUNC(teamColor)] spawn {
           params ["_unit", "_team"];

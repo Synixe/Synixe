@@ -17,7 +17,7 @@
  //get class of UAV to unpack:
  private _deployedUAV = (configFile >> "CfgWeapons" >> _packedUAV >> "itc_land_darter_unPacksTo") call BIS_fnc_getCfgData;
  private _displayName = (configFile >> "CfgVehicles" >> _deployedUAV >> "displayName") call BIS_fnc_getCfgData;
- private _progtext = Format ["Unpacking: %1",_displayName];
+ private _progtext = Format ["Unpacking: %1", _displayName];
  
 //Assemble Darter
 [_caller, "MedicOther"] call ace_common_fnc_doGesture;
@@ -39,7 +39,3 @@
 	{}, 
 	_progtext
 ] call ace_common_fnc_progressBar;
-
-
-
-		 
