@@ -34,6 +34,9 @@
         [QGVAR(groupChange), [_x, _team call FUNC(teamColor)], _x] call CBA_fnc_targetEvent;
         _x setVariable [QGVAR(processed), true];
         [QGVAR(processed), [_x], _x] call CBA_fnc_targetEvent;
+
+        // [team, group]
+        QGVAR(playerVars) setVariable [getPlayerUID _x, [_parent, _team], true];
       };
     } forEach units _group;
   } else {
