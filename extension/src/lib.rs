@@ -1,20 +1,48 @@
 use std::sync::Mutex;
+use std::thread;
 use std::time::SystemTime;
 
 #[macro_use]
 extern crate lazy_static;
 
 use arma_rs::{rv, rv_handler};
-use discord_rpc_client::Client as Discord;
-use enigo::{Enigo, KeyboardControllable, Key};
+use discord_rpc_sdk::{DiscordUser, EventHandlers, RichPresence, RPC};
+use enigo::{Enigo, Key, KeyboardControllable};
 use webbrowser;
 
-lazy_static! {
-    static ref RPCM: Mutex<Discord> = Mutex::new(Discord::new(411594868293500938));
+struct Handlers;
+impl EventHandlers for Handlers {
+    fn ready(user: DiscordUser) {
+        println!("We're ready! {:?}", user);
+    }
+
+    fn errored(errcode: i32, message: &str) {
+        println!("Error {}: {}", errcode, message);
+    }
+
+    fn disconnected(errcode: i32, message: &str) {
+        println!("Disconnected {}: {}", errcode, message);
+    }
+
+    fn join_game(secret: &str) {
+        println!("Joining {}", secret);
+    }
+
+    fn spectate_game(secret: &str) {
+        println!("Spectating {}", secret);
+    }
+
+    fn join_request(from: DiscordUser) {
+        println!("Join request from {:?}", from);
+    }
 }
 
-static mut STARTED: bool = false;
-static mut TIMESTAMP: u64 = 0;
+lazy_static! {
+    static ref RPCM: Mutex<RPC> =
+        Mutex::new(RPC::init::<Handlers>("411594868293500938", true, None).unwrap());
+}
+
+static mut TIMESTAMP: Option<SystemTime> = None;
 
 #[rv]
 fn screenshot() {
@@ -30,33 +58,33 @@ fn browser(url: String) -> String {
 
 #[rv]
 unsafe fn setup() {
-    if !STARTED {
-        RPCM.lock().unwrap().start();
-        STARTED = true;
-    }
-    TIMESTAMP = SystemTime::now().duration_since(SystemTime::UNIX_EPOCH).unwrap().as_secs();
+    TIMESTAMP = Some(SystemTime::now());
 }
 
-#[rv(thread=true)]
+#[rv(thread = true)]
 #[allow(unused_must_use)]
 unsafe fn update(details: String, state: String, image: String, text: String) {
-    RPCM.lock().unwrap().set_activity(|a| a
-        .details(details)
-        .state(state)
-        .assets(|ass| ass
-            .large_image(image)
-            .large_text(text)
-        )
-        .timestamps(|time| time
-            .start(TIMESTAMP)
-        )
-    );
+    let presence = RichPresence {
+        details: Some(details),
+        state: Some(state),
+        start_time: TIMESTAMP,
+        large_image_key: Some(image),
+        large_image_text: Some(text),
+        small_image_key: None,
+        small_image_text: None,
+        party_size: None,
+        party_max: None,
+        spectate_secret: None,
+        join_secret: None,
+        ..Default::default()
+    };
+    RPCM.lock().unwrap().update_presence(presence).unwrap();
 }
 
 #[rv_handler]
 unsafe fn init() {
-    if !STARTED {
-        STARTED = true;
-        RPCM.lock().unwrap().start();
-    }
+    thread::spawn(|| loop {
+        RPCM.lock().unwrap().run_callbacks();
+        thread::sleep(std::time::Duration::from_secs(1));
+    });
 }

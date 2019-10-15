@@ -2,7 +2,7 @@
 
 params ["", "_entity"];
 
-if !(GPGV(properPlacement,false)) exitWith {0};
+if !((player getVariable [QGVAR(properPlacement), false])) exitWith {0};
 
 _entity allowDamage false;
 {
