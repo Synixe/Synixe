@@ -15,3 +15,8 @@ enigo = "0.0.13"
 discord-rpc-sdk = { git = "https://github.com/Delta-Psi/rust-discord-rpc", branch = "master" }
 webbrowser = "0.5"
 libc = "0.2"
+reqwest = "0.9"
+openssl-sys = "*"
+
+[features]
+vendored = ["openssl-sys/vendored"]

