@@ -1,7 +1,13 @@
 #include "script_component.hpp"
 
-0 spawn {
-  waitUntil {!isNull (getAssignedCuratorLogic player)};
+if (!hasInterface) exitWith {0};
+
+if ((side player) isEqualTo sideLogic) then {
+  player enableSimulation false;
+  player setPosASL [0,0,20];
+};
+
+[{!isNull (getAssignedCuratorLogic player)}, {
   (getAssignedCuratorLogic player) addEventHandler ["CuratorObjectPlaced", {
     if (GVAR(properPlacement) && {!(call EFUNC(common,selectedFaction) isEqualTo "empty")}) then {
       params ["", "_entity"];
@@ -13,7 +19,7 @@
       _entity setPosASL [0,0,100];
       private _pos = AGLtoASL screenToWorld getMousePosition;
       private _intersections = lineIntersectsSurfaces [getPosASL curatorCamera, _pos];
-      if((count _intersections) != 0) then {
+      if ((count _intersections) != 0) then {
         private _placePos = ((_intersections select 0) select 0);
         _entity setPosASL [_placePos select 0, _placePos select 1, (_placePos select 2) + 0.1];
       } else {
@@ -29,4 +35,4 @@
       };
     };
   }];
-};
+}] call CBA_fnc_waitUntilAndExecute;

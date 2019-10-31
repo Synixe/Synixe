@@ -1,4 +1,3 @@
-#include "BIS_AddonInfo.hpp"
 class CfgPatches {
 	class itc_land_veh_darter {
 		requiredaddons[] = {"A3_Drones_F_Air_F_Gamma_UAV_01","ace_mk6mortar","ace_common"};

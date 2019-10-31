@@ -18,3 +18,7 @@ if (side player != sideLogic) then {
 [{time > 0 && !(isNull player)}, //Wait for player to be loaded
   FUNC(breath)
 ] call CBA_fnc_waitUntilAndExecute;
+
+["ace_arsenal_displayClosed", {
+  player call FUNC(giveEarplugs);
+}] call CBA_fnc_addEventHandler;

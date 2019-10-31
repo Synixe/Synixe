@@ -1,32 +1,48 @@
 #include "script_component.hpp"
 
 if (isServer) then {
+  // Used to track loadouts after disconnect
   GVAR(loadouts) = true call CBA_fnc_createNamespace;
   publicVariable QGVAR(loadouts);
+
+  // Used to track spectators after disconnect
+  GVAR(spectators) = true call CBA_fnc_createNamespace;
+  publicVariable QGVAR(spectators);
   
   addMissionEventHandler ["HandleDisconnect", {
 	  params ["_unit", "_id", "_uid", "_name"];
     LOG_2("Saving loadout of uid %1 with name %2", _uid, name _unit);
 	  GVAR(loadouts) setVariable [str _uid, getUnitLoadout _unit, true];
   }];
+
+  private _marker = "respawn";
+  if (getMarkerColor _marker isEqualTo "") then {
+    createMarker [_marker, [0,0,0]];
+    _marker setMarkerType "Empty";
+  };
 };
 
 if (!hasInterface || {!isMultiplayer}) exitWith {0};
 
 player setUnitLoadout [GVAR(loadouts) getVariable [str (getPlayerUID player), getUnitLoadout player], true];
 
+// Return to spectator if the player was in spectator when they disconnected
+if (GVAR(spectators) getVariable [str (getPlayerUID player), false]) then {
+  [player, true] call ace_medical_fnc_setDead;
+};
+
 player addMPEventHandler ["MPKilled", {
   GVAR(loadouts) setVariable [str (getPlayerUID player), getUnitLoadout player, true];
+  GVAR(spectators) setVariable [str (getPlayerUID player), true, true];
 }];
 
 // Switch to spectator upon death
 player addEventHandler ["Respawn", {
   params ["", "_corpse"];
-  private _pos = getPosASL player;
+  private _pos = getPosASL _corpse;
   [true] call ace_spectator_fnc_setSpectator;
   player setVariable [QGVAR(dead), true, true];
   player setVariable [QGVAR(corpse), _corpse, true];
-  player setPosASL [0,0,5];
   player enableSimulation false;
   _pos spawn {
     sleep 0.2;
@@ -41,9 +57,11 @@ player addEventHandler ["Respawn", {
   player setPos _position;
   player enableSimulation true;
   [false] call ace_spectator_fnc_setSpectator;
+  GVAR(spectators) setVariable [str (getPlayerUID player), false, true];
   if (_loadout) then {
     player setUnitLoadout [GVAR(loadouts) getVariable [str (getPlayerUID player), []], true];
   };
+  deleteVehicle (player getVariable [QGVAR(corpse), objNull]);
 }] call CBA_fnc_addEventHandler;
 
 // TODO replace with onload for pause menu

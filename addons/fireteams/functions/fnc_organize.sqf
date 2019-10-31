@@ -17,7 +17,7 @@
     {
       if !(_x getVariable [QGVAR(processed), false]) then {
         INFO_1("-   Processing %1", _x);
-        if (((((format ["%1", _x] splitString ":")#1) splitString " ")#0) == "1") then {
+        if (((((format ["%1", _x] splitString ":") select 1) splitString " ") select 0) == "1") then {
           missionNamespace setVariable [format["leader_%1", groupId _group], _x];
           _x setVariable [QGVAR(role), "TL", true];
         };
@@ -34,6 +34,9 @@
         [QGVAR(groupChange), [_x, _team call FUNC(teamColor)], _x] call CBA_fnc_targetEvent;
         _x setVariable [QGVAR(processed), true];
         [QGVAR(processed), [_x], _x] call CBA_fnc_targetEvent;
+
+        // [team, group]
+        GVAR(playerVars) setVariable [str (getPlayerUID _x), [_parent, _team], true];
       };
     } forEach units _group;
   } else {

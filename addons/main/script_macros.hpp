@@ -17,12 +17,3 @@
 #define H_PART(num) QUOTE((num * (SIZEY / 25)))
 #define X_PART(num) QUOTE((W_PART(num) + (safeZoneX + (safeZoneW - SIZEX) / 2)))
 #define Y_PART(num) QUOTE((H_PART(num) + (safeZoneY + (safeZoneH - SIZEY) / 2)))
-
-//getVariable
-#define GPV(var,def) (player getVariable [var, def])
-#define GPGV(var,def) (player getVariable [QGVAR(var), def])
-
-#define MGV(var,def) (missionNamespace getVariable [var, def])
-#define MGGV(var,def) (missionNamespace getVariable [QGVAR(var), def])
-
-#define PATCH(patch) isClass(configFile >> "CfgPatches" >> QUOTE(patch))

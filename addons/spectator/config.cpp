@@ -6,7 +6,7 @@ class CfgPatches {
     units[] = {QGVAR(Module_RespawnPlayer), QGVAR(Module_KillPlayer)};
     weapons[] = {};
     requiredVersion = REQUIRED_VERSION;
-    requiredAddons[] = {"synixe_main","ace_spectator"};
+    requiredAddons[] = {"synixe_main", "ace_spectator"};
     author = "SynixeBrett";
     VERSION_CONFIG;
   };
