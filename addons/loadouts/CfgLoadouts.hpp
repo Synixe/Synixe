@@ -1,5 +1,6 @@
 class SynixeLoadouts {
     #include "loadouts\NATO.hpp"
+    #include "loadouts\police.hpp"
 
     class NATO {
         Pilot = [["arifle_MXC_Black_F","","","optic_Hamr",["30Rnd_65x39_caseless_black_mag",30],[],""],[],[],["U_B_PilotCoveralls",[["ACE_elasticBandage",5],["ACE_morphine",1],["ACE_microDAGR",1],["ACE_HandFlare_Green",1,1],["30Rnd_65x39_caseless_black_mag",2,30],["ACE_Chemlight_UltraHiOrange",5,1],["SmokeShell",1,1],["SmokeShellBlue",1,1]]],[],["B_Parachute",[]],"H_PilotHelmetFighter_B","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ACE_Altimeter",""]];
