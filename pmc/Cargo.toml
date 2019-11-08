@@ -1,0 +1,15 @@
+[package]
+name = "pmc"
+version = "0.1.0"
+authors = ["SynixeBrett"]
+edition = "2018"
+
+[lib]
+name = "pmc"
+crate-type = ["cdylib"]
+
+[dependencies]
+arma-rs = { git = "https://github.com/synixebrett/arma-rs", branch = "master" }
+libc = "*"
+mysql = "*"
+lazy_static = "*"
