@@ -15,3 +15,5 @@
 #endif
 
 #include "\z\synixe\addons\main\script_macros.hpp"
+
+#define EXT "pmc"
