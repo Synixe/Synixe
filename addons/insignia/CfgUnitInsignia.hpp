@@ -17,6 +17,12 @@ class CfgUnitInsignia {
         texture = QPATHTOF(textures\goingtodie.paa);
     };
 
+    class Synixe_Arsey_P {
+        displayName = "Arsey";
+        author = "Arsey";
+        texture = QPATHTOF(textures\arsey.paa);
+    };
+
 
 	class Synixe_Medic_P {
 		displayName = "Medical";

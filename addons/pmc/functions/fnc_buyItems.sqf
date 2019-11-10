@@ -12,10 +12,12 @@ private _cost = 0;
 	if (_need > 0) then {
 		_cost = _cost + (_price * _need);
 		GVAR(owned) setVariable [_x, _owned + _need];
-		GVAR(balance) = GVAR(balance) - (_price * _need);
+		private _balance = player getVariable [QGVAR(balance), 2000];
+		_balance = _balance - (_price * _need);
+		player setVariable [QGVAR(balance), _balance, true];
 	};
 } forEach allVariables _items;
 
-call FUNC(db_syncOwned);
+[player] call FUNC(db_sync);
 
 _cost

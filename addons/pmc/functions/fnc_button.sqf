@@ -2,8 +2,7 @@
 
 params ["_display"];
 
-private _id = getMissionConfigValue ["persistID", ""];
-if (_id == "") exitWith {
+if (getMissionConfigValue ["pmcEnabled", ""] isEqualTo "") exitWith {
 	[_display] call ace_arsenal_fnc_buttonHide;
 };
 
