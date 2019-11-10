@@ -91,7 +91,7 @@
 		// Send an empty loadout to the database
 		[0, {
 			params ["_unit"];
-			EXT callExtension ["save_loadout", [getPlayerUID _unit, [[],[],[],[],[],[],"","",[],["","","","","",""]]];
+			EXT callExtension ["save_loadout", [getPlayerUID _unit, [[],[],[],[],[],[],"","",[],["","","","","",""]]]];
 		}, player] call CBA_fnc_globalExecute;
 		// Store carried items
 		private _items = (getUnitLoadout player) call FUNC(listItems);
