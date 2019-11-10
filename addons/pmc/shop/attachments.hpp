@@ -117,3 +117,6 @@ class cup_bipod_vltor_modpod {
 class acc_flashlight {
     price = 30;
 };
+class acc_flashlight_pistol {
+    price = 30;
+};

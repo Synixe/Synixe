@@ -1,3 +1,7 @@
+// postInit
+PREP(arsenal);
+PREP(modules);
+
 PREP(addOwned);
 PREP(button);
 PREP(buyItems);

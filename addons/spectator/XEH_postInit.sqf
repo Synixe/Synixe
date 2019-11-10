@@ -9,11 +9,13 @@ if (isServer) then {
   GVAR(spectators) = true call CBA_fnc_createNamespace;
   publicVariable QGVAR(spectators);
   
-  addMissionEventHandler ["HandleDisconnect", {
-	  params ["_unit", "_id", "_uid", "_name"];
-    LOG_2("Saving loadout of uid %1 with name %2", _uid, name _unit);
-	  GVAR(loadouts) setVariable [str _uid, getUnitLoadout _unit, true];
-  }];
+  if (getMissionConfigValue ["pmcEnabled", ""] isEqualTo "") then {
+    addMissionEventHandler ["HandleDisconnect", {
+      params ["_unit", "_id", "_uid", "_name"];
+      LOG_2("Saving loadout of uid %1 with name %2", _uid, name _unit);
+      GVAR(loadouts) setVariable [str _uid, getUnitLoadout _unit, true];
+    }];
+  };
 
   private _marker = "respawn";
   if (getMarkerColor _marker isEqualTo "") then {
@@ -33,7 +35,12 @@ if (GVAR(spectators) getVariable [str (getPlayerUID player), false]) then {
 
 player addMPEventHandler ["MPKilled", {
   GVAR(loadouts) setVariable [str (getPlayerUID player), getUnitLoadout player, true];
-  GVAR(spectators) setVariable [str (getPlayerUID player), true, true];
+  0 spawn {
+    sleep 4;
+    if (alive player) then {
+      GVAR(spectators) setVariable [str (getPlayerUID player), true, true];
+    };
+  };
 }];
 
 // Switch to spectator upon death
@@ -58,8 +65,12 @@ player addEventHandler ["Respawn", {
   player enableSimulation true;
   [false] call ace_spectator_fnc_setSpectator;
   GVAR(spectators) setVariable [str (getPlayerUID player), false, true];
-  if (_loadout) then {
-    player setUnitLoadout [GVAR(loadouts) getVariable [str (getPlayerUID player), []], true];
+  if (getMissionConfigValue ["pmcEnabled", ""] isEqualTo "") then {
+    if (_loadout) then {
+      player setUnitLoadout [GVAR(loadouts) getVariable [str (getPlayerUID player), []], true];
+    };
+  } else {
+    player setUnitLoadout [[[],[],[],[],[],[],"","",[],["","","","","",""]], true];
   };
   deleteVehicle (player getVariable [QGVAR(corpse), objNull]);
 }] call CBA_fnc_addEventHandler;
