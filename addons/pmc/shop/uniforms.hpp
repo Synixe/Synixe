@@ -80,41 +80,41 @@ class tacs_Uniform_Combat_LS_CPS_BP_BB {
     price = 100;
 };
 class tacs_Uniform_Polo_TP_BS_LP_BB_NoLogo {
-    price = 100;
+    price = 80;
 };
 class tacs_Uniform_Polo_TP_BS_TP_TB_NoLogo {
-    price = 100;
+    price = 80;
 };
 class tacs_Uniform_Polo_TP_LS_GP_BB_NoLogo {
-    price = 100;
+    price = 80;
 };
 class tacs_Uniform_Polo_TP_LS_TP_TB_NoLogo {
-    price = 100;
+    price = 80;
 };
 class tacs_Uniform_Polo_TP_OS_LP_BB_NoLogo {
-    price = 100;
+    price = 80;
 };
 class tacs_Uniform_Polo_TP_OS_TP_BB_NoLogo {
-    price = 100;
+    price = 80;
 };
 class tacs_Uniform_Polo_TP_GS_TP_TB_NoLogo {
-    price = 100;
+    price = 80;
 };
 class tacs_Uniform_Polo_CP_LS_TP_OB {
-    price = 100;
+    price = 80;
 };
 class tacs_Uniform_Polo_CP_RS_LP_BB {
-    price = 100;
+    price = 80;
 };
 class tacs_Uniform_Polo_TP_TS_GP_BB_NoLogo {
-    price = 100;
+    price = 80;
 };
 class tacs_Uniform_Polo_TP_WS_LP_BB_NoLogo {
-    price = 100;
+    price = 80;
 };
 class tacs_Uniform_Polo_TP_WS_GP_BB_NoLogo {
-    price = 100;
+    price = 80;
 };
 class tacs_Uniform_Polo_TP_WS_TP_TB_NoLogo {
-    price = 100;
+    price = 80;
 };

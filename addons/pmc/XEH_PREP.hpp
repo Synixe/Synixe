@@ -1,6 +1,8 @@
 // postInit
-PREP(arsenal);
-PREP(modules);
+PREP(init_arsenal);
+PREP(init_loadout);
+PREP(init_modules);
+PREP(init_stats);
 
 PREP(addOwned);
 PREP(button);

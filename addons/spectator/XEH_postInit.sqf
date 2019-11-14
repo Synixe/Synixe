@@ -30,7 +30,9 @@ player setUnitLoadout [GVAR(loadouts) getVariable [str (getPlayerUID player), ge
 
 // Return to spectator if the player was in spectator when they disconnected
 if (GVAR(spectators) getVariable [str (getPlayerUID player), false]) then {
-  [player, true] call ace_medical_fnc_setDead;
+  if (getMissionConfigValue ["pmcEnabled", ""] isEqualTo "") then {
+    [player, true] call ace_medical_fnc_setDead;
+  };
 };
 
 player addMPEventHandler ["MPKilled", {

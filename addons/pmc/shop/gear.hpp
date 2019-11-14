@@ -14,7 +14,7 @@ class ItemWatch {
     price = 0;
 };
 class ACE_EarPlugs {
-    price = 0;
+    price = 5;
 };
 class ACE_EntrenchingTool {
     price = 50;
@@ -84,10 +84,10 @@ class ACE_DefusalKit {
     price = 150;
 };
 class AMP_Breaching_Charge_Mag {
-    price = 35;
+    price = 30;
 };
 class DemoCharge_Remote_Mag {
-    price = 50;
+    price = 150;
 };
 class ACE_Clacker {
     price = 20;

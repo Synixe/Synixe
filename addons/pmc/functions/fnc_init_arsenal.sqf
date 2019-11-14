@@ -1,18 +1,20 @@
 #include "script_component.hpp"
 
+#include "\z\ace\addons\arsenal\defines.hpp"
+
 ["ace_arsenal_displayOpened", {
 	params ["_display"];
-	player setVariable [QGVAR(inArsenal), false, true];
+	player setVariable [QGVAR(inArsenal), true, true];
 	GVAR(preLoadout) = getUnitLoadout player;
 	// Send an empty loadout to the database
 	[0, {
 		params ["_unit"];
-		EXT callExtension ["save_loadout", [getPlayerUID _unit, [[],[],[],[],[],[],"","",[],["","","","","",""]]]];
+		EXT callExtension ["save_loadout", [getPlayerUID _unit, str ([[],[],[],[],[],[],"","",[],["","","","","",""]])]];
 	}, player] call CBA_fnc_globalExecute;
 	// Store carried items
 	private _items = (getUnitLoadout player) call FUNC(listItems);
 	private _cost = [_items] call FUNC(addOwned);
-	[player] call FUNC(db_sync);
+	[player, getPlayerUID player] call FUNC(db_sync);
 	[_items] call CBA_fnc_deleteNamespace;
 	GVAR(balanceHandle) = [{
 		params ["_args"];
@@ -54,7 +56,7 @@
 	[_items] call FUNC(takeOwned);
 	[_items] call CBA_fnc_deleteNamespace;
 	player setVariable [QGVAR(inArsenal), false, true];
-	[player] call FUNC(db_savePlayer);
+	[player, getPlayerUID player] call FUNC(db_savePlayer);
 }] call CBA_fnc_addEventHandler;
 
 ["ace_arsenal_leftPanelFilled", {
@@ -64,7 +66,6 @@
 		private _class = _ctrlPanel lbData _lbIndex;
 		if ([_class] call FUNC(getOwned) > 0) then {
 			_ctrlPanel lbSetColor [_lbIndex, [0, 1, 0, 1]];
-			_ctrlPanel lnbSetColor [_lbIndex, [0, 1, 0, 1]];
 		};
 	};
 }] call CBA_fnc_addEventHandler;
@@ -76,6 +77,7 @@
 		private _class = _ctrlPanel lbData _lbIndex;
 		if ([_class] call FUNC(getOwned) > 0) then {
 			_ctrlPanel lbSetColor [_lbIndex, [0, 1, 0, 1]];
+			_ctrlPanel lnbSetColor [_lbIndex, [0, 1, 0, 1]];
 		};
 	};
 }] call CBA_fnc_addEventHandler;

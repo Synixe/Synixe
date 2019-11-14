@@ -31,22 +31,22 @@ class V_TacVest_oli {
 };
 	
 class V_CarrierRigKBT_01_light_Black_F {
-    price = 100;
+    price = 180;
 };
 class V_CarrierRigKBT_01_light_Coyote_F {
-    price = 100;
+    price = 180;
 };
 class V_CarrierRigKBT_01_light_Green_F {
-    price = 100;
+    price = 180;
 };
 class V_CarrierRigKBT_01_Black_F {
-    price = 90;
+    price = 150;
 };
 class V_CarrierRigKBT_01_Coyote_F {
-    price = 90;
+    price = 150;
 };
 class V_CarrierRigKBT_01_Green_F {
-    price = 90;
+    price = 150;
 };
 	
 class V_Rangemaster_belt_blk {
