@@ -11,4 +11,4 @@ params ["_unit", "_uid"];
 		INFO_1("%1 in arsenal, skipping", name _unit);
 	};
 	EXT callExtension ["save_loadout", [_uid, str ([_unit] call FUNC(cleanLoadout))]];
-}, [_unit, _uid] call CBA_fnc_globalExecute;
+}, [_unit, _uid]] call CBA_fnc_globalExecute;

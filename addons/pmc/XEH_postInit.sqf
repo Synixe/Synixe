@@ -7,7 +7,9 @@
 	// Server side only
 	if (isServer) then {
 		EXT callExtension "setup";
-		INFO("setup complete");
+
+		[QGVAR(balance)] call FUNC(db_trackVariable);
+		[QGVAR(owned)] call FUNC(db_trackVariable);
 
 		// delete corpse
 		addMissionEventHandler ["HandleDisconnect", {
@@ -15,6 +17,8 @@
 			[_unit, _uid] call FUNC(db_savePlayer);
 			deleteVehicle _unit;
 		}];
+		
+		INFO("setup complete");
 	};
 
 	// Don't run on HC
@@ -23,9 +27,6 @@
 	systemChat "Enabling PMC Persistent System";
 
 	player setUnitLoadout [[[],[],[],[],[],[],"","",[],["","","","","",""]], true];
-
-	[QGVAR(balance)] call FUNC(db_trackVariable);
-	[QGVAR(owned)] call FUNC(db_trackVariable);
 
 	call FUNC(init_loadout);
 

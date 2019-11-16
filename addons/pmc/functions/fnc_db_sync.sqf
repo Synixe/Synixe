@@ -14,4 +14,4 @@ call FUNC(db_syncOwned);
 			INFO_3("syncing %1: %2 = %3", _uid, _x, str _val);
 		};
 	} forEach (missionNamespace getVariable [QGVAR(tracked), []]);
-}, [_unit, _uid] call CBA_fnc_globalExecute;
+}, [_unit, _uid]] call CBA_fnc_globalExecute;
