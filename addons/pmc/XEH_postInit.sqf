@@ -42,5 +42,6 @@
 	player setVariable [QGVAR(inArsenal), true, true];
 
 	call FUNC(init_arsenal);
+	call FUNC(init_stats);
 	call FUNC(init_modules);
 }, {}, 1] call CBA_fnc_waitAndExecute;

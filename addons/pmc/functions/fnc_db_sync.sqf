@@ -12,6 +12,6 @@ call FUNC(db_syncOwned);
 		if !(_val isEqualTo objNull) then {
 			EXT callExtension ["save_variable", [_uid, _x, str _val]];
 			INFO_3("syncing %1: %2 = %3", _uid, _x, str _val);
-		}
+		};
 	} forEach (missionNamespace getVariable [QGVAR(tracked), []]);
 }, [_unit, _uid] call CBA_fnc_globalExecute;
