@@ -1,6 +1,11 @@
 class Binocular {
     price = 30;
 };
+class ACE_Yardage450 {
+    price = 100;
+};
+
+
 class ItemMap {
     price = 0;
 };
@@ -22,7 +27,7 @@ class ACE_EntrenchingTool {
 class ACE_wirecutter {
     price = 50;
 };
-class ACE_MapTools {
+class ACE_MapTool {
     price = 10;
 };
 class ACE_Flashlight_MX991 {
@@ -43,10 +48,10 @@ class ACE_SpraypaintRed {
 };
 	
 class ACRE_PRC343 {
-    price = 150;
+    price = 120;
 };
 class ACRE_PRC148 {
-    price = 600;
+    price = 500;
 };
 	
 class ACE_CableTie {

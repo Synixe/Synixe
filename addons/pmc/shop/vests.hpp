@@ -30,24 +30,24 @@ class V_TacVest_oli {
     price = 70;
 };
 	
-class V_CarrierRigKBT_01_light_Black_F {
-    price = 180;
-};
-class V_CarrierRigKBT_01_light_Coyote_F {
-    price = 180;
-};
-class V_CarrierRigKBT_01_light_Green_F {
-    price = 180;
-};
-class V_CarrierRigKBT_01_Black_F {
-    price = 150;
-};
-class V_CarrierRigKBT_01_Coyote_F {
-    price = 150;
-};
-class V_CarrierRigKBT_01_Green_F {
-    price = 150;
-};
+// class V_CarrierRigKBT_01_light_Black_F {
+//     price = 180;
+// };
+// class V_CarrierRigKBT_01_light_Coyote_F {
+//     price = 180;
+// };
+// class V_CarrierRigKBT_01_light_Green_F {
+//     price = 180;
+// };
+// class V_CarrierRigKBT_01_Black_F {
+//     price = 150;
+// };
+// class V_CarrierRigKBT_01_Coyote_F {
+//     price = 150;
+// };
+// class V_CarrierRigKBT_01_Green_F {
+//     price = 150;
+// };
 	
 class V_Rangemaster_belt_blk {
     price = 60;
@@ -60,6 +60,13 @@ class V_Rangemaster_belt_khk {
 };
 class V_Rangemaster_belt_oli {
     price = 60;
+};
+
+class SP_Holster1_Black {
+    price = 20;
+};
+class SP_Holster1_Brown {
+    price = 20;
 };
 	
 class CUP_V_B_Armatus_Black {
@@ -157,4 +164,11 @@ class CUP_V_B_Ciras_Olive3 {
 };
 class CUP_V_B_Ciras_Olive4 {
     price = 190;
+};
+
+class V_EOD_coyote_F {
+    price = 200;
+};
+class V_EOD_olive_F {
+    price = 200;
 };

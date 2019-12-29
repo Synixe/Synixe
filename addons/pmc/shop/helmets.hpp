@@ -34,16 +34,16 @@ class CUP_H_PMC_Beanie_Headphones_Winter {
 };
 	
 class SP_ACHHelmet_Black1 {
-    price = 80;
+    price = 110;
 };
 class SP_ACHHelmet_Green1 {
-    price = 80;
+    price = 110;
 };
 class SP_ACHHelmet_Tan1 {
-    price = 80;
+    price = 110;
 };
 class SP_ACHHelmet_White1 {
-    price = 80;
+    price = 110;
 };
 	
 class CUP_H_OpsCore_Black {

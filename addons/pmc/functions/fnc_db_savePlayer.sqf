@@ -2,8 +2,6 @@
 
 params ["_unit", "_uid"];
 
-[_unit, _uid] call FUNC(db_sync);
-
 [0, {
 	params ["_unit", "_uid"];
 	INFO_1("saving %1", name _unit);

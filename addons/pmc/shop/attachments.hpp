@@ -105,13 +105,13 @@ class cup_optic_acog_ta01nsn_tropic {
 };
 	
 class cup_bipod_vltor_modpod_black {
-    price = 30;
+    price = 20;
 };
 class cup_bipod_vltor_modpod_od {
-    price = 30;
+    price = 20;
 };
 class cup_bipod_vltor_modpod {
-    price = 30;
+    price = 20;
 };
 	
 class acc_flashlight {

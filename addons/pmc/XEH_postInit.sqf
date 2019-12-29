@@ -15,9 +15,12 @@
 		addMissionEventHandler ["HandleDisconnect", {
 			params ["_unit", "_id", "_uid", "_name"];
 			[_unit, _uid] call FUNC(db_savePlayer);
-			deleteVehicle _unit;
+			_unit spawn {
+				sleep 15;
+				deleteVehicle _this;
+			};
 		}];
-		
+
 		INFO("setup complete");
 	};
 
@@ -31,12 +34,12 @@
 	call FUNC(init_loadout);
 
 	// Save the loadout every time it changes, except in the arsenal
-	["loadout", {
-		private _outArsenal = !(player getVariable [QGVAR(inArsenal), false]);
-		if (time > 5 && {_outArsenal}) then {
-			[player, getPlayerUID player] call FUNC(db_savePlayer);
-		};
-	}] call CBA_fnc_addPlayerEventHandler;
+	// ["loadout", {
+	// 	private _outArsenal = !(player getVariable [QGVAR(inArsenal), false]);
+	// 	if (time > 5 && {_outArsenal}) then {
+	// 		[player, getPlayerUID player] call FUNC(db_savePlayer);
+	// 	};
+	// }] call CBA_fnc_addPlayerEventHandler;
 
 	GVAR(owned) = call CBA_fnc_createNamespace;
 

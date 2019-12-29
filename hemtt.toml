@@ -5,7 +5,7 @@ files = ["mod.cpp", "synixe_logo_transparent_ca.paa", "synixe_x64.dll"]
 include = ["./include"]
 
 postbuild = ["!extension"]
-releasebuild = ["@zip {{name}}_{{version}}"]
+releasebuild = ["@zip {{name}}", "@zip {{name}}_{{version}}"]
 
 [scripts.extension]
 show_output = true

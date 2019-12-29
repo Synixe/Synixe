@@ -4,7 +4,7 @@
     params ["","_object"];
     [
         "Payment",
-        [["SLIDER","Payment Amount",[500,2000,1000,0],0]],
+        [["SLIDER","Payment Amount",[50,2000,1000,0],0]],
         {
             params ["_values", "_args"];
             _values params ["_amount"];
@@ -28,4 +28,11 @@
             _object setVariable [QGVAR(balance), _current - _amount, true];
         },{},[_object]
     ] call zen_dialog_fnc_create;
+}] call zen_custom_modules_fnc_register;
+
+["Synixe PMC", "Sync", {
+    [-1, {
+        [player, getPlayerUID player] call FUNC(db_savePlayer);
+	    [player, getPlayerUID player] call FUNC(db_sync);
+    }] call CBA_fnc_globalExecute;
 }] call zen_custom_modules_fnc_register;
