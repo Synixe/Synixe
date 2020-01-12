@@ -6,10 +6,13 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {};
-        author = "ArmaForces";
+        requiredAddons[] = {"synixe_main"};
+        authors[] = {"Jonpas", "SynixeBrett"};
         VERSION_CONFIG;
     };
 };
 
-#include "CfgEventHandlers.hpp"
+#include "CfgAILevelPresets.hpp"
+#include "CfgAISkill.hpp"
+#include "CfgDifficultyPresets.hpp"
+#include "CfgSurfaces.hpp"

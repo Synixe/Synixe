@@ -4,12 +4,12 @@
 [0, {
 	private _loadout = (EXT callExtension ["get_loadout", [getPlayerUID _this]]) select 0;
 	if !(_loadout isEqualTo ":NOTFOUND") then {
-	[QGVAR(setLoadout), [call compile _loadout], _this] call CBA_fnc_targetEvent;
+		[QGVAR(setLoadout), [call compile _loadout], _this] call CBA_fnc_targetEvent;
 	};
 }, player] call CBA_fnc_globalExecute;
 
 [QGVAR(setLoadout), {
-	_this params ["_loadout"];
+	_this params [["_loadout", []]];
 	INFO_1("Setting loadout: %1", _loadout);
 	player setUnitLoadout [_loadout, false];
 	systemChat " - loadout";

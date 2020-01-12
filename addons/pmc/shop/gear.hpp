@@ -13,10 +13,10 @@ class ItemGPS {
     price = 50;
 };
 class ItemCompass {
-    price = 0;
+    price = 5;
 };
 class ItemWatch {
-    price = 0;
+    price = 10;
 };
 class ACE_EarPlugs {
     price = 5;
@@ -32,6 +32,15 @@ class ACE_MapTool {
 };
 class ACE_Flashlight_MX991 {
     price = 10;
+};
+class ACE_Flashlight_Maglite_ML300L {
+    price = 20;  
+};
+class ACE_MapTools {
+    price = 10;
+};
+class ACE_microDAGR {
+    price = 250;
 };
 	
 class ACE_SpraypaintBlack {
@@ -63,6 +72,15 @@ class ACE_bodyBag {
 class ACE_elasticBandage {
     price = 0;
 };
+class ACE_packingBandage {
+    price = 0;
+};
+class ACE_splint {
+    price = 0;
+};
+class ACE_quikclot {
+    price = 0;
+};
 class ACE_epinephrine {
     price = 0;
 };
@@ -82,6 +100,12 @@ class ACE_salineIV_250 {
     price = 0;
 };
 class ACE_salineIV_500 {
+    price = 0;
+};
+class tac_medical_painkillers {
+    price = 0;
+};
+class ACE_surgicalKit {
     price = 0;
 };
 	

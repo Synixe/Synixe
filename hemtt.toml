@@ -7,6 +7,8 @@ include = ["./include"]
 postbuild = ["!extension"]
 releasebuild = ["@zip {{name}}", "@zip {{name}}_{{version}}"]
 
+sig_name = "{{version}}"
+
 [scripts.extension]
 show_output = true
 steps_windows = [

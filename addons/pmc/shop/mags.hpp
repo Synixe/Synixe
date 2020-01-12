@@ -44,3 +44,11 @@ class CUP_30Rnd_556x45_Stanag_Mk16_woodland_Tracer_Red {
 class 16Rnd_9x21_Mag {
     price = 10;
 };
+
+// Flares
+class 6Rnd_GreenSignal_F {
+    price = 30;
+};
+class 6Rnd_RedSignal_F {
+    price = 30;
+};

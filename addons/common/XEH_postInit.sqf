@@ -12,7 +12,12 @@ call FUNC(disableChat);
 
 // Start with safety on
 if (side player != sideLogic) then {
-  [player, currentWeapon player, currentMuzzle player] call ace_safemode_fnc_lockSafety;
+  if !(primaryWeapon player isEqualTo "") then {
+    [player, primaryWeapon player, true] call ance_safemode_fnc_setWeaponSafety;
+  };
+  if !(secondaryWeapon player isEqualTo "") then {
+    [player, secondaryWeapon player, true] call ance_safemode_fnc_setWeaponSafety;
+  };
 };
 
 [{time > 0 && !(isNull player)}, //Wait for player to be loaded

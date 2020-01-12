@@ -5,6 +5,10 @@ if (isServer) then {
   GVAR(loadouts) = true call CBA_fnc_createNamespace;
   publicVariable QGVAR(loadouts);
 
+  // Used to track position after disconnect
+  GVAR(position) = true call CBA_fnc_createNamespace;
+  publicVariable QGVAR(position);
+
   // Used to track spectators after disconnect
   GVAR(spectators) = true call CBA_fnc_createNamespace;
   publicVariable QGVAR(spectators);
@@ -14,6 +18,7 @@ if (isServer) then {
       params ["_unit", "_id", "_uid", "_name"];
       LOG_2("Saving loadout of uid %1 with name %2", _uid, name _unit);
       GVAR(loadouts) setVariable [str _uid, getUnitLoadout _unit, true];
+      GVAR(position) setVariable [str _uid, [getPos _unit, vehicle _unit], true];
     }];
   };
 
@@ -27,6 +32,18 @@ if (isServer) then {
 if (!hasInterface || {!isMultiplayer}) exitWith {0};
 
 player setUnitLoadout [GVAR(loadouts) getVariable [str (getPlayerUID player), getUnitLoadout player], true];
+
+private _position = GVAR(position) getVariable [str (getPlayerUID player), objNull];
+if !(isNull _position) then {
+  _position params ["_pos", "_veh"];
+  if (!(_veh isEqualTo objNull) && {alive _veh}) then {
+    if !(player moveInAny _veh) then {
+      player setPos _pso;
+    };
+  } else {
+    player setPos _pos;
+  };
+};
 
 // Return to spectator if the player was in spectator when they disconnected
 if (GVAR(spectators) getVariable [str (getPlayerUID player), false]) then {

@@ -28,6 +28,6 @@ if !(alive _mouseOverUnit) exitWith { ["str_a3_bis_fnc_modulearsenal_errordead"]
 
 GVAR(loadouts) setVariable [str (getPlayerUID _mouseOverUnit), getUnitLoadout _mouseOverUnit, true];
 
-[_mouseOverUnit, true] call ace_medical_fnc_setDead;
+_mouseOverUnit setDamage 1;
 
 deleteVehicle _logic;

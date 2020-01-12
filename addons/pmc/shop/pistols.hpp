@@ -21,3 +21,7 @@ class tacs_Walther_P99_Tan {
 class ACE_VMH3 {
     price = 200;
 };
+
+class hgun_Pistol_Signal_F {
+    price = 100;
+};

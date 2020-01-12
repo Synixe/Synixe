@@ -5,13 +5,29 @@ if (!hasInterface) exitWith {0};
 if ((side player) isEqualTo sideLogic) then {
   player enableSimulation false;
   player setPosASL [0,0,20];
+
+  joinTime = time;
+  [{(time - joinTime) > 5}, {
+    {
+      if (!isnull (getassignedcuratorunit _x)) then {
+        _unit = getassignedcuratorunit _x;
+        if (isnull (getassignedcuratorlogic _unit)) then {
+          unassignCurator _x;
+          _x setCuratorCoef ["Place", 0];
+          _x setCuratorCoef ["Delete", 0];
+          _x setVariable ["Addons", 3, true];
+          sleep 1;
+          _unit assignCurator _x;
+        };
+      };
+    } foreach allcurators;
+  }] call CBA_fnc_waitUntilAndExecute;
 };
 
 [{!isNull (getAssignedCuratorLogic player)}, {
   (getAssignedCuratorLogic player) addEventHandler ["CuratorObjectPlaced", {
     if (GVAR(properPlacement) && {!(call EFUNC(common,selectedFaction) isEqualTo "empty")}) then {
       params ["", "_entity"];
-      systemChat format ["side: %1 %2", side _entity, alive _entity];
       _entity allowDamage false;
       {
         _x allowDamage false;
