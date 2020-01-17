@@ -15,16 +15,7 @@
 	systemChat " - loadout";
 }] call CBA_fnc_addEventHandlerArgs;
 
-// Tell server to fetch variables
-[0, {
-	private _variables = (EXT callExtension ["get_variables", [getPlayerUID _this]]) select 0;
-	if !(_variables isEqualTo ":NOTFOUND") then {
-	{
-		_this setVariable [_x select 0, _x select 1, true];
-	} forEach parseSimpleArray (_variables);
-	[QGVAR(synced), [], _this] call CBA_fnc_targetEvent;
-	};
-}, player] call CBA_fnc_globalExecute;
+call FUNC(db_pull);
 
 [QGVAR(synced), {
 	[GVAR(owned)] call CBA_fnc_deleteNamespace;
@@ -32,4 +23,11 @@
 	{
 		GVAR(owned) setVariable [_x select 0, _x select 1];
 	} forEach (player getVariable [QGVAR(owned), []]);
+
+	// Refresh Arsenals
+	private _items = call FUNC(getItems);
+	{
+		[_x, true, false] call ace_arsenal_fnc_removeVirtualItems;
+		[_x, _items] call ace_arsenal_fnc_initBox;
+	} forEach GVAR(boxes);
 }] call CBA_fnc_addEventHandler;

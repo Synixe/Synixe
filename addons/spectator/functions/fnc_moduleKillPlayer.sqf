@@ -26,7 +26,7 @@ if !(local _logic) exitWith {};
 if (_mouseOverType != "OBJECT") exitWith { [LSTRING(NothingSelected)] call FUNC(showMessage); deleteVehicle _logic; };
 if !(alive _mouseOverUnit) exitWith { ["str_a3_bis_fnc_modulearsenal_errordead"] call FUNC(showMessage); deleteVehicle _logic; };
 
-GVAR(loadouts) setVariable [str (getPlayerUID _mouseOverUnit), getUnitLoadout _mouseOverUnit, true];
+GVAR(loadouts) setVariable [getPlayerUID _mouseOverUnit, getUnitLoadout _mouseOverUnit, true];
 
 _mouseOverUnit setDamage 1;
 

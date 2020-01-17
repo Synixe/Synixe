@@ -118,3 +118,14 @@ class tacs_Uniform_Polo_TP_WS_GP_BB_NoLogo {
 class tacs_Uniform_Polo_TP_WS_TP_TB_NoLogo {
     price = 50;
 };
+
+class U_C_Functionary_1 {
+    price = 150;
+};
+
+class U_O_R_Gorka_01_F {
+    price = 150;
+};
+class U_O_R_Gorka_01_black_F {
+    price = 150;
+};

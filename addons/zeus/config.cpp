@@ -21,6 +21,7 @@ class CfgFactionClasses {
   };
 };
 
+#include "CfgEden.hpp"
 #include "CfgVehicles.hpp"
 #include "RscAttributes.hpp"
 

@@ -17,10 +17,14 @@ if (isServer) then {
     addMissionEventHandler ["HandleDisconnect", {
       params ["_unit", "_id", "_uid", "_name"];
       LOG_2("Saving loadout of uid %1 with name %2", _uid, name _unit);
-      GVAR(loadouts) setVariable [str _uid, getUnitLoadout _unit, true];
-      GVAR(position) setVariable [str _uid, [getPos _unit, vehicle _unit], true];
+      GVAR(loadouts) setVariable [_uid, getUnitLoadout _unit, true];
     }];
   };
+
+  addMissionEventHandler ["HandleDisconnect", {
+    params ["_unit", "_id", "_uid", "_name"];
+    GVAR(position) setVariable [_uid, [getPos _unit, vehicle _unit], true];
+  }];
 
   private _marker = "respawn";
   if (getMarkerColor _marker isEqualTo "") then {
@@ -31,10 +35,10 @@ if (isServer) then {
 
 if (!hasInterface || {!isMultiplayer}) exitWith {0};
 
-player setUnitLoadout [GVAR(loadouts) getVariable [str (getPlayerUID player), getUnitLoadout player], true];
+player setUnitLoadout [GVAR(loadouts) getVariable [getPlayerUID player, getUnitLoadout player], true];
 
-private _position = GVAR(position) getVariable [str (getPlayerUID player), objNull];
-if !(isNull _position) then {
+private _position = GVAR(position) getVariable [getPlayerUID player, []];
+if !(_position isEqualTo []) then {
   _position params ["_pos", "_veh"];
   if (!(_veh isEqualTo objNull) && {alive _veh}) then {
     if !(player moveInAny _veh) then {
@@ -46,18 +50,18 @@ if !(isNull _position) then {
 };
 
 // Return to spectator if the player was in spectator when they disconnected
-if (GVAR(spectators) getVariable [str (getPlayerUID player), false]) then {
+if (GVAR(spectators) getVariable [getPlayerUID player, false]) then {
   if (getMissionConfigValue ["pmcEnabled", ""] isEqualTo "") then {
     [player, true] call ace_medical_fnc_setDead;
   };
 };
 
 player addMPEventHandler ["MPKilled", {
-  GVAR(loadouts) setVariable [str (getPlayerUID player), getUnitLoadout player, true];
+  GVAR(loadouts) setVariable [getPlayerUID player, getUnitLoadout player, true];
   0 spawn {
     sleep 4;
     if (alive player) then {
-      GVAR(spectators) setVariable [str (getPlayerUID player), true, true];
+      GVAR(spectators) setVariable [getPlayerUID player, true, true];
     };
   };
 }];
@@ -83,10 +87,10 @@ player addEventHandler ["Respawn", {
   player setPos _position;
   player enableSimulation true;
   [false] call ace_spectator_fnc_setSpectator;
-  GVAR(spectators) setVariable [str (getPlayerUID player), false, true];
+  GVAR(spectators) setVariable [getPlayerUID player, false, true];
   if (getMissionConfigValue ["pmcEnabled", ""] isEqualTo "") then {
     if (_loadout) then {
-      player setUnitLoadout [GVAR(loadouts) getVariable [str (getPlayerUID player), []], true];
+      player setUnitLoadout [GVAR(loadouts) getVariable [getPlayerUID player, []], true];
     };
   } else {
     player setUnitLoadout [[[],[],[],[],[],[],"","",[],["","","","","",""]], true];

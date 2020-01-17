@@ -10,22 +10,34 @@
 
 		[QGVAR(balance)] call FUNC(db_trackVariable);
 		[QGVAR(owned)] call FUNC(db_trackVariable);
+		["ace_medical_medicClass"] call FUNC(db_trackVariable);
 
 		// delete corpse
 		addMissionEventHandler ["HandleDisconnect", {
 			params ["_unit", "_id", "_uid", "_name"];
 			[_unit, _uid] call FUNC(db_savePlayer);
 			_unit spawn {
-				sleep 15;
+				sleep 3;
 				deleteVehicle _this;
 			};
 		}];
+
+		[{
+			{
+				if !(_x getVariable [QGVAR(ignore), false]) then {
+					private _outArsenal = !(_x getVariable [QGVAR(inArsenal), false]);
+					if (time > 5 && {_outArsenal}) then {
+						[_x, getPlayerUID _x] call FUNC(db_savePlayer);
+					};
+				};
+			} forEach allPlayers;
+		}, 5] call CBA_fnc_addPerFrameHandler;
 
 		INFO("setup complete");
 	};
 
 	// Don't run on HC
-	if !(hasInterface) exitWith {};
+	if !(hasInterface) exitWith { player setVariable [QGVAR(ignore), true, true]; };
 
 	systemChat "Enabling PMC Persistent System";
 
@@ -43,7 +55,7 @@
 
 	GVAR(owned) = call CBA_fnc_createNamespace;
 
-	player setVariable [QGVAR(inArsenal), true, true];
+	player setVariable [QGVAR(inArsenal), false, true];
 
 	call FUNC(init_arsenal);
 	call FUNC(init_stats);

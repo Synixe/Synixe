@@ -1,27 +1,30 @@
 #include "script_component.hpp"
 
-if (!hasInterface) exitWith {0};
+if (isServer) then {
+    [QGVAR(zeusAssign), {
+        params ["_unit"];
+        if !(isPlayer _unit) exitWith {};
 
-if ((side player) isEqualTo sideLogic) then {
+        private _curatorModule = [_unit] call FUNC(getFreeCuratorModule);
+        _unit assignCurator _curatorModule;
+    }] call CBA_fnc_addEventHandler;
+
+    [QGVAR(zeusUnassign), {
+        params ["_unit"];
+        if !(isPlayer _unit) exitWith {};
+
+        private _curatorModule = getAssignedCuratorLogic _unit;
+        if (_curatorModule isEqualTo objNull) exitWith {};
+        unassignCurator (GVAR(curators) select _curatorModule);
+    }] call CBA_fnc_addEventHandler;
+};
+
+if !(hasInterface) exitWith {0};
+
+if (typeOf player isEqualto "VirtualCurator_F") then {
   player enableSimulation false;
-  player setPosASL [0,0,20];
-
-  joinTime = time;
-  [{(time - joinTime) > 5}, {
-    {
-      if (!isnull (getassignedcuratorunit _x)) then {
-        _unit = getassignedcuratorunit _x;
-        if (isnull (getassignedcuratorlogic _unit)) then {
-          unassignCurator _x;
-          _x setCuratorCoef ["Place", 0];
-          _x setCuratorCoef ["Delete", 0];
-          _x setVariable ["Addons", 3, true];
-          sleep 1;
-          _unit assignCurator _x;
-        };
-      };
-    } foreach allcurators;
-  }] call CBA_fnc_waitUntilAndExecute;
+  player setPosASL [0, 0, 20];
+  [player] call FUNC(assignZeus);
 };
 
 [{!isNull (getAssignedCuratorLogic player)}, {

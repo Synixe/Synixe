@@ -36,7 +36,7 @@
         [QGVAR(processed), [_x], _x] call CBA_fnc_targetEvent;
 
         // [team, group]
-        GVAR(playerVars) setVariable [str (getPlayerUID _x), [_parent, _team], true];
+        GVAR(playerVars) setVariable [getPlayerUID _x, [_parent, _team], true];
       };
     } forEach units _group;
   } else {

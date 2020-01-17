@@ -15,6 +15,18 @@ class CfgPatches {
 #include "CfgUnitInsignia.hpp"
 #include "CfgVehicles.hpp"
 
+class Cfg3DEN {
+  class Object {
+    class AttributeCategories {
+      class PREFIX {
+        displayName = "Synixe Attributes";
+        collapsed = 1;
+        class Attributes {};
+      };
+    };
+  };
+};
+
 class RscStandardDisplay;
 class RscControlsGroup;
 class RscPictureKeepAspect;

@@ -23,6 +23,18 @@ class CfgUnitInsignia {
         texture = QPATHTOF(textures\arsey.paa);
     };
 
+    class Synixe_Gabe_P {
+        displayName = "Thick Thighs Save Lives";
+        author = "Gabe";
+        texture = QPATHTOF(textures\gabe.paa);
+    };
+
+    class Synixe_Seal_P {
+        displayName = "Seal";
+        author = "Seal";
+        texture = QPATHTOF(textures\seal.paa);
+    };
+
 
 	class Synixe_Medic_P {
 		displayName = "Medical";

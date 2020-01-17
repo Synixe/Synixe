@@ -1,17 +1,17 @@
 class V_BandollierB_blk {
-    price = 40;
+    price = 60;
 };
 class V_BandollierB_cbr {
-    price = 40;
+    price = 60;
 };
 class V_BandollierB_cbr {
-    price = 40;
+    price = 60;
 };
 class V_BandollierB_khk {
-    price = 40;
+    price = 60;
 };
 class V_BandollierB_oli {
-    price = 40;
+    price = 60;
 };
 	
 class V_TacVest_blk {
@@ -50,16 +50,16 @@ class V_TacVest_oli {
 // };
 	
 class V_Rangemaster_belt_blk {
-    price = 60;
+    price = 40;
 };
 class V_Rangemaster_belt_cbr {
-    price = 60;
+    price = 40;
 };
 class V_Rangemaster_belt_khk {
-    price = 60;
+    price = 40;
 };
 class V_Rangemaster_belt_oli {
-    price = 60;
+    price = 40;
 };
 
 class SP_Holster1_Black {
@@ -105,10 +105,10 @@ class CUP_V_PMC_CIRAS_Coyote_Veh {
     price = 150;
 };
 class CUP_V_PMC_CIRAS_Black_Empty {
-    price = 150;
+    price = 120;
 };
 class CUP_V_PMC_CIRAS_Coyote_Empty {
-    price = 150;
+    price = 120;
 };
 class CUP_V_PMC_CIRAS_Black_Grenadier {
     price = 150;
@@ -117,16 +117,16 @@ class CUP_V_PMC_CIRAS_Coyote_Grenadier {
     price = 150;
 };
 class CUP_V_PMC_CIRAS_Black_Patrol {
-    price = 150;
+    price = 170;
 };
 class CUP_V_PMC_CIRAS_Coyote_Patrol {
-    price = 150;
+    price = 170;
 };
 class CUP_V_PMC_CIRAS_Black_TL {
-    price = 170;
+    price = 180;
 };
 class CUP_V_PMC_CIRAS_Coyote_TL {
-    price = 170;
+    price = 180;
 };
 	
 class CUP_V_B_Ciras_Black {

@@ -18,6 +18,6 @@ private _cost = 0;
 	};
 } forEach allVariables _items;
 
-[player, getPlayerUID player] call FUNC(db_sync);
+[player, getPlayerUID player] call FUNC(db_push);
 
 _cost

@@ -23,4 +23,6 @@ ADDON = false;
   true
 ] call CBA_Settings_fnc_init;
 
+GVAR(curators) = [];
+
 ADDON = true;

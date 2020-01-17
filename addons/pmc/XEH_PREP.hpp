@@ -7,6 +7,7 @@ PREP(init_stats);
 PREP(addOwned);
 PREP(button);
 PREP(buyItems);
+PREP(canUse);
 PREP(cleanLoadout);
 PREP(getItems);
 PREP(getListing);
@@ -19,6 +20,7 @@ PREP(takeOwned);
 
 // Database
 PREP(db_savePlayer);
-PREP(db_sync);
-PREP(db_syncOwned);
+PREP(db_pull);
+PREP(db_push);
+PREP(db_pushOwned);
 PREP(db_trackVariable);

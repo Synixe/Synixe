@@ -30,9 +30,15 @@
     ] call zen_dialog_fnc_create;
 }] call zen_custom_modules_fnc_register;
 
-["Synixe PMC", "Sync", {
+["Synixe PMC", "Push", {
     [-1, {
         [player, getPlayerUID player] call FUNC(db_savePlayer);
-	    [player, getPlayerUID player] call FUNC(db_sync);
+	    [player, getPlayerUID player] call FUNC(db_push);
+    }] call CBA_fnc_globalExecute;
+}] call zen_custom_modules_fnc_register;
+
+["Synixe PMC", "Refresh Items", {
+    [-1, {
+        [QGVAR(synced)] call CBA_fnc_localEvent;
     }] call CBA_fnc_globalExecute;
 }] call zen_custom_modules_fnc_register;

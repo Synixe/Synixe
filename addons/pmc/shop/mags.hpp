@@ -40,7 +40,22 @@ class CUP_30Rnd_556x45_Stanag_Mk16_Tracer_Red {
 class CUP_30Rnd_556x45_Stanag_Mk16_woodland_Tracer_Red {
     price = 20;
 };
-	
+
+// SMG
+class 30Rnd_9x21_Mag_SMG_02 {
+    price = 15;
+};
+class 30Rnd_9x21_Mag_SMG_02_Tracer_Yellow {
+    price = 15;
+};
+class 30Rnd_9x21_Mag_SMG_02_Tracer_Red {
+    price = 15;
+};
+class 30Rnd_9x21_Mag_SMG_02_Tracer_Green {
+    price = 15;
+};
+
+// Pistol
 class 16Rnd_9x21_Mag {
     price = 10;
 };

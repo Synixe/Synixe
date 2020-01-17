@@ -5,7 +5,6 @@ class ACE_Yardage450 {
     price = 100;
 };
 
-
 class ItemMap {
     price = 0;
 };
@@ -55,12 +54,12 @@ class ACE_SpraypaintGreen {
 class ACE_SpraypaintRed {
     price = 10;
 };
-	
+
 class ACRE_PRC343 {
-    price = 120;
+    price = 100;
 };
 class ACRE_PRC148 {
-    price = 500;
+    price = 400;
 };
 	
 class ACE_CableTie {
@@ -81,34 +80,13 @@ class ACE_splint {
 class ACE_quikclot {
     price = 0;
 };
-class ACE_epinephrine {
-    price = 0;
-};
-class ACE_adenosine {
-    price = 0;
-};
 class ACE_tourniquet {
-    price = 0;
-};
-class ACE_morphine {
-    price = 0;
-};
-class ACE_salineIV {
-    price = 0;
-};
-class ACE_salineIV_250 {
-    price = 0;
-};
-class ACE_salineIV_500 {
     price = 0;
 };
 class tac_medical_painkillers {
     price = 0;
 };
-class ACE_surgicalKit {
-    price = 0;
-};
-	
+
 class ACE_DefusalKit {
     price = 150;
 };

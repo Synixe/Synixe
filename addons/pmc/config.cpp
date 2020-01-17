@@ -19,7 +19,7 @@ class SynixeShop {
 	#include "shop\rifles.hpp"
 	#include "shop\pistols.hpp"
 	#include "shop\mgs.hpp"
-	// #include "shop\smgs.hpp"
+	#include "shop\smgs.hpp"
 	
 	#include "shop\uniforms.hpp"
 	#include "shop\vests.hpp"
@@ -31,4 +31,6 @@ class SynixeShop {
 	#include "shop\gear.hpp"
  	#include "shop\mags.hpp"
 	#include "shop\throwables.hpp"
+
+	#include "shop\roles\medic.hpp"
 };
