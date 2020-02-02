@@ -23,7 +23,7 @@ if (isServer) then {
 
   addMissionEventHandler ["HandleDisconnect", {
     params ["_unit", "_id", "_uid", "_name"];
-    GVAR(position) setVariable [_uid, [getPos _unit, vehicle _unit], true];
+    GVAR(position) setVariable [_uid, [getPosASL _unit, vehicle _unit], true];
   }];
 
   private _marker = "respawn";
@@ -42,10 +42,10 @@ if !(_position isEqualTo []) then {
   _position params ["_pos", "_veh"];
   if (!(_veh isEqualTo objNull) && {alive _veh}) then {
     if !(player moveInAny _veh) then {
-      player setPos _pso;
+      player setPosASL _pso;
     };
   } else {
-    player setPos _pos;
+    player setPosASL _pos;
   };
 };
 
@@ -95,7 +95,9 @@ player addEventHandler ["Respawn", {
   } else {
     player setUnitLoadout [[[],[],[],[],[],[],"","",[],["","","","","",""]], true];
   };
-  deleteVehicle (player getVariable [QGVAR(corpse), objNull]);
+  if (getMissionConfigValue ["pmcEnabled", ""] isEqualTo "") then {
+    deleteVehicle (player getVariable [QGVAR(corpse), objNull]);
+  };
 }] call CBA_fnc_addEventHandler;
 
 // TODO replace with onload for pause menu

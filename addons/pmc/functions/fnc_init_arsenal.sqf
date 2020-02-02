@@ -48,9 +48,13 @@
 		(lnbSize _ctrlPanel) params ["_rows", "_columns"];
 		for "_lbIndex" from 0 to (_rows - 1) do {
 			private _class = _ctrlPanel lnbData [_lbIndex, 0];
-			if (([_class] call FUNC(getOwned)) > 0 && {[_class] call FUNC(getPrice) > 0}) then {
+			private _price = [_class] call FUNC(getPrice);
+			private _owned = [_class] call FUNC(getOwned);
+			if (_owned > 0 && {_price > 0}) then {
 				_ctrlPanel lnbSetColor [[_lbIndex, 1], [0, 1, 0, 1]];
 			};
+			private _tooltip = format ["%1\nOwned: %2\nPrice: %3", _class, _owned, _price];
+			_ctrlPanel lnbSetTooltip [[_lbIndex, 0], _tooltip];
 		};
 	}, 0, [_display]] call CBA_fnc_addPerFrameHandler;
 }] call CBA_fnc_addEventHandler;

@@ -2,10 +2,8 @@
 private _needAdmin = true;
 private _needHeadless = true;
 
-private _needGameMaster = true;
 private _needGameMasterEntity = true;
 
-private _needSupervisor = true;
 private _needSupervisorEntity = true;
 
 private _objects = allMissionObjects "";
@@ -15,12 +13,6 @@ private _objects = allMissionObjects "";
       private _owner = (_x get3DENAttribute "ModuleCurator_F_Owner") select 0;
       if (_owner == "#adminLogged") then {
         _needAdmin = false;
-      };
-      if (_owner == "curator") then {
-        _needGameMaster = false;
-      };
-      if (_owner == "supervisor") then {
-        _needSupervisor = false;
       };
     };
     case "VirtualCurator_F": {
@@ -47,37 +39,23 @@ if (_needAdmin) then {
   _module set3DENAttribute ["ModuleCurator_F_Owner", "#adminLogged"];
 };
 
-if (_needGameMaster) then {
-  // Create Curator Zeus
-  private _module = create3DENEntity ["Logic", "ModuleCurator_F", [0, 0, 0]];
-  _module set3DENAttribute ["ModuleCurator_F_Owner", "curator"];
-  _module set3DENAttribute ["ModuleCurator_F_Forced", true];
+if (_needGameMasterEntity) then {
+  // Create Curator Entity
+  private _module = create3DENEntity ["Logic", "VirtualCurator_F", [0, 0, 0]];
+  _module set3DENAttribute ["name", "curator"];
+  _module set3DENAttribute ["ControlSP", false];
+  _module set3DENAttribute ["ControlMP", true];
+  _module set3DENAttribute ["description", "Game Master"];
 };
 
-// if (_needGameMasterEntity) then {
-//   // Create Curator Entity
-//   private _module = create3DENEntity ["Logic", "VirtualCurator_F", [0, 0, 0]];
-//   _module set3DENAttribute ["name", "curator"];
-//   _module set3DENAttribute ["ControlSP", false];
-//   _module set3DENAttribute ["ControlMP", true];
-//   _module set3DENAttribute ["description", "Game Master"];
-// };
-
-if (_needSupervisor) then {
-  // Create Curator Zeus
-  private _module = create3DENEntity ["Logic", "ModuleCurator_F", [0, 0, 0]];
-  _module set3DENAttribute ["ModuleCurator_F_Owner", "supervisor"];
-  _module set3DENAttribute ["ModuleCurator_F_Forced", true];
+if (_needSupervisorEntity) then {
+  // Create Curator Entity
+  private _module = create3DENEntity ["Logic", "VirtualCurator_F", [0, 0, 0]];
+  _module set3DENAttribute ["name", "supervisor"];
+  _module set3DENAttribute ["ControlSP", false];
+  _module set3DENAttribute ["ControlMP", true];
+  _module set3DENAttribute ["description", "Supervisor"];
 };
-
-// if (_needSupervisorEntity) then {
-//   // Create Curator Entity
-//   private _module = create3DENEntity ["Logic", "VirtualCurator_F", [0, 0, 0]];
-//   _module set3DENAttribute ["name", "supervisor"];
-//   _module set3DENAttribute ["ControlSP", false];
-//   _module set3DENAttribute ["ControlMP", true];
-//   _module set3DENAttribute ["description", "Supervisor"];
-// };
 
 if (_needHeadless) then {
   // Create Headless Client

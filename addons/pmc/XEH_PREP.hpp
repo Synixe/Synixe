@@ -9,6 +9,7 @@ PREP(button);
 PREP(buyItems);
 PREP(canUse);
 PREP(cleanLoadout);
+PREP(difference);
 PREP(getItems);
 PREP(getListing);
 PREP(getOwned);

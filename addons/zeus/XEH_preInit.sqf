@@ -15,14 +15,6 @@ ADDON = false;
   }
 ] call CBA_Settings_fnc_init;
 
-[
-  QGVAR(properPlacement),
-  "CHECKBOX",
-  "Proper Placement",
-  "Synixe Zeus",
-  true
-] call CBA_Settings_fnc_init;
-
 GVAR(curators) = [];
 
 ADDON = true;
