@@ -35,7 +35,7 @@ class RscDisplayStart: RscStandardDisplay {
     class LoadingStart: RscControlsGroup {
       class controls {
         class Logo: RscPictureKeepAspect {
-          text = PATHTO_R(media\synixe_logo_transparent_ca.paa);
+          text = QPATHTO_R(media\synixe_logo_transparent_ca.paa);
           onLoad = "";
         };
       };

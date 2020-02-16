@@ -13,6 +13,7 @@
 	INFO_1("Setting loadout: %1", _loadout);
 	player setUnitLoadout [_loadout, false];
 	systemChat " - loadout";
+	GVAR(ready) = true;
 }] call CBA_fnc_addEventHandlerArgs;
 
 call FUNC(db_pull);

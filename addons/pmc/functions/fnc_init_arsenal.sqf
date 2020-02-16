@@ -73,7 +73,7 @@
 	[_items] call CBA_fnc_deleteNamespace;
 	player setVariable [QGVAR(inArsenal), false, true];
 	[player, getPlayerUID player] call FUNC(db_savePlayer);
-	[player, getPlayerUID player] call FUNC(db_sync);
+	[player, getPlayerUID player] call FUNC(db_push);
 }] call CBA_fnc_addEventHandler;
 
 ["ace_arsenal_leftPanelFilled", {

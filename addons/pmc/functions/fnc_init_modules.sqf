@@ -11,6 +11,7 @@
             _args params ["_object"];
             private _current = _object getVariable [QGVAR(balance), 0];
             _object setVariable [QGVAR(balance), _current + _amount, true];
+            [_object, getPlayerUID _object] call FUNC(db_push);
         },{},[_object]
     ] call zen_dialog_fnc_create;
 }] call zen_custom_modules_fnc_register;
@@ -26,6 +27,7 @@
             _args params ["_object"];
             private _current = _object getVariable [QGVAR(balance), 0];
             _object setVariable [QGVAR(balance), _current - _amount, true];
+            [_object, getPlayerUID _object] call FUNC(db_push);
         },{},[_object]
     ] call zen_dialog_fnc_create;
 }] call zen_custom_modules_fnc_register;

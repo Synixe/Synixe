@@ -15,7 +15,7 @@
 		// delete corpse
 		addMissionEventHandler ["HandleDisconnect", {
 			params ["_unit", "_id", "_uid", "_name"];
-			[_unit, _uid] call FUNC(db_savePlayer);
+			[_unit, _uid, _name] call FUNC(db_savePlayer);
 			_unit spawn {
 				sleep 3;
 				deleteVehicle _this;
@@ -50,7 +50,7 @@
 
 	// Save the loadout every time it changes, except in the arsenal
 	["loadout", {
-		if !(player getVariable [QGVAR(ignore), false]) then {
+		if (GVAR(ready) && {!(player getVariable [QGVAR(ignore), false])}) then {
 			private _outArsenal = !(player getVariable [QGVAR(inArsenal), false]);
 			if (time > 5 && {_outArsenal}) then {
 				[player, getPlayerUID player] call FUNC(db_savePlayer);

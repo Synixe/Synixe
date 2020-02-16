@@ -4,3 +4,4 @@ ADDON = false;
 ADDON = true;
 
 GVAR(boxes) = [];
+GVAR(ready) = false;

@@ -35,7 +35,9 @@ if (isServer) then {
 
 if (!hasInterface || {!isMultiplayer}) exitWith {0};
 
-player setUnitLoadout [GVAR(loadouts) getVariable [getPlayerUID player, getUnitLoadout player], true];
+if (getMissionConfigValue ["pmcEnabled", ""] isEqualTo "") then {
+  player setUnitLoadout [GVAR(loadouts) getVariable [getPlayerUID player, getUnitLoadout player], true];
+};
 
 private _position = GVAR(position) getVariable [getPlayerUID player, []];
 if !(_position isEqualTo []) then {
@@ -57,7 +59,9 @@ if (GVAR(spectators) getVariable [getPlayerUID player, false]) then {
 };
 
 player addMPEventHandler ["MPKilled", {
-  GVAR(loadouts) setVariable [getPlayerUID player, getUnitLoadout player, true];
+  if (getMissionConfigValue ["pmcEnabled", ""] isEqualTo "") then {
+    GVAR(loadouts) setVariable [getPlayerUID player, getUnitLoadout player, true];
+  };
   0 spawn {
     sleep 4;
     if (alive player) then {
@@ -93,7 +97,12 @@ player addEventHandler ["Respawn", {
       player setUnitLoadout [GVAR(loadouts) getVariable [getPlayerUID player, []], true];
     };
   } else {
-    player setUnitLoadout [[[],[],[],[],[],[],"","",[],["","","","","",""]], true];
+    0 spawn {
+      sleep 4;
+      if (alive player) then {
+        player setUnitLoadout [[[],[],[],[],[],[],"","",[],["","","","","",""]], true];
+      };
+    }
   };
   if (getMissionConfigValue ["pmcEnabled", ""] isEqualTo "") then {
     deleteVehicle (player getVariable [QGVAR(corpse), objNull]);
