@@ -1,8 +1,7 @@
 #include "script_component.hpp"
 
 //In the future it would be nice to automatically track who comes to missions.
-//"synixe" callExtension ["setup", [getPlayerUID player]];
-"synixe" callExtension "setup";
+"synixe" callExtension ["setup", [getPlayerUID player, profileName]];
 
 [{
   private _role = "https://synixe.com";

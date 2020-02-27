@@ -7,6 +7,8 @@ use std::time::SystemTime;
 extern crate lazy_static;
 
 use arma_rs::{rv, rv_handler};
+use arma_rs_macros::rv_callback;
+
 use discord_rpc_sdk::{DiscordUser, EventHandlers, RichPresence, RPC};
 use enigo::{Enigo, Key, KeyboardControllable};
 use webbrowser;
@@ -14,7 +16,10 @@ use webbrowser;
 struct Handlers;
 impl EventHandlers for Handlers {
     fn ready(user: DiscordUser) {
-        println!("We're ready! {:?}", user);
+        thread::spawn(move || {
+            thread::sleep_ms(2_000);   
+            rv_callback!("synixe", "user_ready", user.user_id, user.username);
+        });
     }
 
     fn errored(errcode: i32, message: &str) {
@@ -44,13 +49,14 @@ lazy_static! {
 }
 
 static mut TIMESTAMP: Option<SystemTime> = None;
+static mut PROFILE_NAME: String = String::new();
 
-#[rv]
-fn webhook(body: String) {
-    let client = reqwest::Client::new();
+#[rv(thread=true)]
+fn watchdog(body: String) {
+    let client = reqwest::blocking::Client::new();
     let mut data = HashMap::new();
     data.insert("content", body);
-    let res = client.post("https://discordapp.com/api/webhooks/637507362185543680/9nl3-GjVxXRFgPLeCa-xIZmSwx_BqSiQrtK1IKmskfsYCqV3WsHmAy9TLWAduy4oF6OV")
+    client.post("https://discordapp.com/api/webhooks/682424869132173321/zEVbsLRCNmCG842TBt_vwjxLBv7TB0zFVzxDXUObk7js1Ut0PFlzupcQciHPqkOLf0jh")
         .json(&data)
         .send();
 }
@@ -68,8 +74,9 @@ fn browser(url: String) -> String {
 }
 
 #[rv]
-unsafe fn setup() {
+unsafe fn setup(_steam_id: String, profile_name: String) {
     TIMESTAMP = Some(SystemTime::now());
+    PROFILE_NAME = profile_name;
 }
 
 #[rv(thread = true)]
