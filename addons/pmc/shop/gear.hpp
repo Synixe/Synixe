@@ -99,3 +99,18 @@ class DemoCharge_Remote_Mag {
 class ACE_Clacker {
     price = 20;
 };
+
+
+// UAV
+class B_UavTerminal {
+    price = 100;
+};
+class ITC_Land_B_AR2e_Packed {
+    price = 1600;
+};
+class ITC_Land_B_AR2i_Packed {
+    price = 2000;
+};
+class ACE_UAVBattery {
+    price = 50;
+};

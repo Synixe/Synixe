@@ -18,8 +18,10 @@ class CfgPatches {
 class SynixeShop {
 	#include "shop\rifles.hpp"
 	#include "shop\pistols.hpp"
-	// #include "shop\mgs.hpp"
+	#include "shop\mgs.hpp"
+	#include "shop\dmr.hpp"
 	#include "shop\smgs.hpp"
+	#include "shop\launchers.hpp"
 	
 	#include "shop\uniforms.hpp"
 	#include "shop\vests.hpp"

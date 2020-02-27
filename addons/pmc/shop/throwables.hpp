@@ -1,19 +1,23 @@
 class ACE_M84 {
-	price = 25;
+	price = 20;
 };
 class ACE_CTS9 {
-	price = 50;
+	price = 40;
 };
 
 class SmokeShell {
-	price = 20;
+	price = 10;
 };
 class SmokeShellYellow {
-	price = 20;
+	price = 10;
 };
 class SmokeShellBlue {
-	price = 20;
+	price = 10;
 };
 class SmokeShellRed {
-	price = 20;
+	price = 10;
+};
+
+class MiniGrenade {
+	price = 30;
 };

@@ -2,6 +2,7 @@
 
 ["Synixe PMC", "Payment", {
     params ["","_object"];
+    if (isNull _object) exitWith {};
     [
         "Payment",
         [["SLIDER","Payment Amount",[50,2000,1000,0],0]],
@@ -18,6 +19,7 @@
 
 ["Synixe PMC", "Fine", {
     params ["","_object"];
+    if (isNull _object) exitWith {};
     [
         "Fine",
         [["SLIDER","Fine Amount",[10,1000,200,0],0]],
