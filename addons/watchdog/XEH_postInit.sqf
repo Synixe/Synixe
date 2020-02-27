@@ -6,7 +6,7 @@ if (hasInterface) then {
 		if !(side _unit isEqualTo side _instigator) exitWith {};
 		[0, {
 			params ["_unit", "_instigator"];
-			"synixe" callExtension ["webhook", format ["%1 was shot by %2", name _unit, name _instigator]];
+			"synixe" callExtension ["watchdog", format ["%1 was injured by %2", name _unit, name _instigator]];
 		}, [_unit, _instigator]];
 	}];
 };
