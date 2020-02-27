@@ -103,15 +103,49 @@ class cup_optic_acog_ta01nsn_tan {
 class cup_optic_acog_ta01nsn_tropic {
     price = 100;
 };
-	
-class cup_bipod_vltor_modpod_black {
+class cup_optic_elcan {
+    price = 120;
+};
+class cup_optic_elcan_coyote {
+    price = 120;
+};
+class cup_optic_elcan_od {
+    price = 120;
+};
+class cup_optic_elcan_reflex {
+    price = 140;
+};
+class cup_optic_elcan_reflex_coyote {
+    price = 140;
+};
+class cup_optic_elcan_reflex_od {
+    price = 140;
+};
+class optic_yorris {
+    price = 10000;
+};
+
+class optic_aco_grn {
     price = 30;
+};
+class optic_aco {
+    price = 30;
+};
+class optic_aco_grn_smg {
+    price = 30;
+};
+class optic_aco_smg {
+    price = 30;
+};
+
+class cup_bipod_vltor_modpod_black {
+    price = 20;
 };
 class cup_bipod_vltor_modpod_od {
-    price = 30;
+    price = 20;
 };
 class cup_bipod_vltor_modpod {
-    price = 30;
+    price = 20;
 };
 	
 class acc_flashlight {

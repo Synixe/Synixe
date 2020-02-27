@@ -78,17 +78,17 @@ INFO("Running radio setup");
       //private _longRadio = [LONGRANGE_RADIO] call acre_api_fnc_getRadioByType;
       //[_longRadio, ("COMMAND" call EFUNC(common,callsignBlock))] call acre_api_fnc_setRadioChannel;
     };
-  };
 
-  private _order = [];
-  if (_hasRifleman) then {
-    _order pushBack ([RIFLEMAN_RADIO] call acre_api_fnc_getRadioByType);
+    private _order = [];
+    if (_hasRifleman) then {
+      _order pushBack ([RIFLEMAN_RADIO] call acre_api_fnc_getRadioByType);
+    };
+    if (_hasSquad) then {
+      _order pushBack ([SQUAD_RADIO] call acre_api_fnc_getRadioByType);
+    };
+    if (_hasLong) then {
+      _order pushBack ([LONGRANGE_RADIO] call acre_api_fnc_getRadioByType);
+    };
+    INFO_2("- Setting PTT Order: %1 - %2", _order, [_order] call acre_api_fnc_setMultiPushToTalkAssignment);
   };
-  if (_hasSquad) then {
-    _order pushBack ([SQUAD_RADIO] call acre_api_fnc_getRadioByType);
-  };
-  if (_hasLong) then {
-    _order pushBack ([LONGRANGE_RADIO] call acre_api_fnc_getRadioByType);
-  };
-  INFO_2("- Setting PTT Order: %1 - %2", _order, [_order] call acre_api_fnc_setMultiPushToTalkAssignment);
 };

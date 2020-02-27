@@ -6,7 +6,7 @@ class CfgPatches {
     units[] = {};
     weapons[] = {};
     requiredVersion = REQUIRED_VERSION;
-    requiredAddons[] = {"ace_arsenal"};
+    requiredAddons[] = {"synixe_main", "ace_arsenal"};
     author = "SynixeBrett";
     VERSION_CONFIG;
   };
@@ -19,7 +19,9 @@ class SynixeShop {
 	#include "shop\rifles.hpp"
 	#include "shop\pistols.hpp"
 	#include "shop\mgs.hpp"
-	#include "shop\smgs.hpp"	
+	#include "shop\dmr.hpp"
+	#include "shop\smgs.hpp"
+	#include "shop\launchers.hpp"
 	
 	#include "shop\uniforms.hpp"
 	#include "shop\vests.hpp"
@@ -29,5 +31,8 @@ class SynixeShop {
 
 	#include "shop\attachments.hpp"
 	#include "shop\gear.hpp"
-  #include "shop\mags.hpp"
+ 	#include "shop\mags.hpp"
+	#include "shop\throwables.hpp"
+
+	#include "shop\roles\medic.hpp"
 };

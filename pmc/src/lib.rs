@@ -14,7 +14,7 @@ lazy_static! {
         Mutex::new(mysql::Pool::new(std::env::var("PMC_HOST").unwrap().to_string()).unwrap());
 }
 
-#[rv]
+#[rv(thread)]
 fn save_loadout(player: String, loadout: String) {
     POOL.lock()
         .unwrap()
@@ -58,7 +58,7 @@ fn get_loadout(player: String) -> String {
     ":NOTFOUND".to_owned()
 }
 
-#[rv]
+#[rv(thread)]
 fn save_variable(player: String, name: String, value: String) {
     POOL.lock()
         .unwrap()

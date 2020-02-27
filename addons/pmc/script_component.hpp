@@ -17,3 +17,5 @@
 #include "\z\synixe\addons\main\script_macros.hpp"
 
 #define EXT "pmc"
+
+#define IDC_ITEMS 5239

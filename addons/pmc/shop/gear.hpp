@@ -1,6 +1,10 @@
 class Binocular {
     price = 30;
 };
+class ACE_Yardage450 {
+    price = 100;
+};
+
 class ItemMap {
     price = 0;
 };
@@ -8,13 +12,13 @@ class ItemGPS {
     price = 50;
 };
 class ItemCompass {
-    price = 0;
+    price = 5;
 };
 class ItemWatch {
-    price = 0;
+    price = 10;
 };
 class ACE_EarPlugs {
-    price = 0;
+    price = 5;
 };
 class ACE_EntrenchingTool {
     price = 50;
@@ -22,11 +26,20 @@ class ACE_EntrenchingTool {
 class ACE_wirecutter {
     price = 50;
 };
-class ACE_MapTools {
+class ACE_MapTool {
     price = 10;
 };
 class ACE_Flashlight_MX991 {
     price = 10;
+};
+class ACE_Flashlight_Maglite_ML300L {
+    price = 20;  
+};
+class ACE_MapTools {
+    price = 10;
+};
+class ACE_microDAGR {
+    price = 250;
 };
 	
 class ACE_SpraypaintBlack {
@@ -41,12 +54,12 @@ class ACE_SpraypaintGreen {
 class ACE_SpraypaintRed {
     price = 10;
 };
-	
+
 class ACRE_PRC343 {
-    price = 150;
+    price = 100;
 };
 class ACRE_PRC148 {
-    price = 600;
+    price = 400;
 };
 	
 class ACE_CableTie {
@@ -58,37 +71,46 @@ class ACE_bodyBag {
 class ACE_elasticBandage {
     price = 0;
 };
-class ACE_epinephrine {
+class ACE_packingBandage {
     price = 0;
 };
-class ACE_adenosine {
+class ACE_splint {
+    price = 0;
+};
+class ACE_quikclot {
     price = 0;
 };
 class ACE_tourniquet {
     price = 0;
 };
-class ACE_morphine {
+class tac_medical_painkillers {
     price = 0;
 };
-class ACE_salineIV {
-    price = 0;
-};
-class ACE_salineIV_250 {
-    price = 0;
-};
-class ACE_salineIV_500 {
-    price = 0;
-};
-	
+
 class ACE_DefusalKit {
     price = 150;
 };
 class AMP_Breaching_Charge_Mag {
-    price = 35;
+    price = 30;
 };
 class DemoCharge_Remote_Mag {
-    price = 50;
+    price = 150;
 };
 class ACE_Clacker {
     price = 20;
+};
+
+
+// UAV
+class B_UavTerminal {
+    price = 100;
+};
+class ITC_Land_B_AR2e_Packed {
+    price = 1600;
+};
+class ITC_Land_B_AR2i_Packed {
+    price = 2000;
+};
+class ACE_UAVBattery {
+    price = 50;
 };

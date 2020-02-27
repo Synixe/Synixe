@@ -2,3 +2,6 @@
 ADDON = false;
 #include "XEH_PREP.hpp"
 ADDON = true;
+
+GVAR(boxes) = [];
+GVAR(ready) = false;
