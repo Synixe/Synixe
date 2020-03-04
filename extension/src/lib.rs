@@ -17,7 +17,7 @@ struct Handlers;
 impl EventHandlers for Handlers {
     fn ready(user: DiscordUser) {
         thread::spawn(move || {
-            thread::sleep_ms(2_000);   
+            thread::sleep(std::time::Duration::from_secs(2));   
             rv_callback!("synixe", "user_ready", user.user_id, user.username);
         });
     }
