@@ -6,7 +6,7 @@ class ACE_Yardage450 {
 };
 
 class ItemMap {
-    price = 0;
+    price = 10;
 };
 class ItemGPS {
     price = 50;

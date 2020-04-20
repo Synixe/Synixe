@@ -8,6 +8,18 @@ if (isClass _shopClass) exitWith {
 	_class
 };
 
+private _launcherCheck = (tolower _class) splitString "_";
+if (count _launcherCheck > 0) then {
+	if ((_launcherCheck select (count _launcherCheck - 1)) isEqualTo "loaded") then {
+		_launcherCheck deleteAt (count _launcherCheck - 1);
+		_launcherCheck = _launcherCheck joinString "_";
+		private _shopClass = configFile >> "SynixeShop" >> _launcherCheck;
+		if (isClass _shopClass) then {
+			_ret = _launcherCheck;
+		};
+	};
+};
+
 // Check for non-pip
 private _parents = [configFile >> "CfgWeapons" >> _class, true] call BIS_fnc_returnParents;
 if (count _parents > 2) then {

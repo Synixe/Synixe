@@ -1,18 +1,28 @@
+class CUP_arifle_Mk16_SV {
+    price = DMR_PRICE;
+};
+class CUP_arifle_Mk16_SV_black {
+    price = DMR_PRICE;
+};
+class CUP_arifle_Mk16_SV_woodland {
+    price = DMR_PRICE;
+};
+
 class CUP_arifle_HK417_20 {
-	price = 2500;
+	price = DMR_PRICE;
 };
 class CUP_arifle_HK417_20_Desert {
-	price = 2500;
+	price = DMR_PRICE;
 };
 class CUP_arifle_HK417_20_Wood {
-	price = 2500;
+	price = DMR_PRICE;
 };
 
 class CUP_srifle_L129A1 {
-	price = 2500;
+	price = DMR_PRICE;
 };
 class CUP_srifle_L129A1_HG {
-	price = 2500;
+	price = DMR_PRICE;
 };
 
 class srifle_EBR_F {

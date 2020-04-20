@@ -18,4 +18,9 @@
 
 #define EXT "pmc"
 
-#define IDC_ITEMS 5239
+#define SHORT_RIFLE_PRICE 1200
+#define ASSAULT_RIFLE_PRICE 1500
+
+#define DMR_PRICE 2500
+
+#define SMG_PRICE 1000

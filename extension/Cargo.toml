@@ -12,7 +12,7 @@ crate-type = ["cdylib"]
 arma-rs = { git = "https://github.com/synixebrett/arma-rs", branch = "master" }
 arma-rs-macros = { git = "https://github.com/synixebrett/arma-rs", branch = "master" }
 lazy_static = "1.4"
-enigo = "0.0.13"
+enigo = "0.0.14"
 discord-rpc-sdk = { git = "https://github.com/Delta-Psi/rust-discord-rpc", branch = "master" }
 webbrowser = "0.5"
 libc = "0.2"
